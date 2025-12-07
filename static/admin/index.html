@@ -6,26 +6,6 @@
   <title>Content Manager</title>
 </head>
 <body>
-  <script>
-    // Extract token from URL and store it for Decap CMS
-    (function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const token = urlParams.get('token');
-      
-      if (token) {
-        // Store token in sessionStorage for Decap CMS
-        sessionStorage.setItem('netlify-cms-user', JSON.stringify({
-          token: token,
-          backend: 'github'
-        }));
-        
-        // Clean up URL by removing token parameter
-        urlParams.delete('token');
-        const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '') + window.location.hash;
-        window.history.replaceState({}, document.title, newUrl);
-      }
-    })();
-  </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>

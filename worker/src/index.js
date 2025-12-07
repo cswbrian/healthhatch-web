@@ -1,6 +1,5 @@
 /**
  * Cloudflare Worker for Decap CMS GitHub OAuth Proxy
- * Based on: https://github.com/sterlingwes/decap-proxy
  */
 
 export default {
@@ -18,32 +17,35 @@ export default {
       });
     }
 
-    // Handle OAuth authorization
+    // 1. Redirect to GitHub for Authorization
     if (url.pathname === '/auth') {
       const clientId = env.GITHUB_CLIENT_ID;
-      const redirectUri = url.searchParams.get('redirect_uri') || env.REDIRECT_URI;
+      // Default to the worker's own URL/callback if not provided, but Decap usually provides none,
+      // so we use the env var or construct it.
+      const redirectUri = env.REDIRECT_URI || `${url.origin}/callback`;
       const scope = url.searchParams.get('scope') || 'repo';
+      const state = crypto.randomUUID(); // Good practice to have state
       
-      const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${scope}`;
+      const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${scope}&state=${state}`;
       
       return Response.redirect(authUrl, 302);
     }
 
-    // Handle OAuth callback
+    // 2. Handle Callback from GitHub
     if (url.pathname === '/callback') {
       const code = url.searchParams.get('code');
-      const state = url.searchParams.get('state');
       
       if (!code) {
         return new Response('Missing authorization code', { status: 400 });
       }
 
-      // Exchange code for token
+      // Exchange code for access token
       const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
+          'User-Agent': 'Cloudflare-Worker-Decap-CMS'
         },
         body: JSON.stringify({
           client_id: env.GITHUB_CLIENT_ID,
@@ -61,19 +63,35 @@ export default {
         });
       }
 
-      // Return token to Decap CMS - use SITE_URL from env or default
-      const siteUrl = env.SITE_URL || 'https://healthhatch-web.pages.dev';
-      const redirectUrl = `${siteUrl}/admin/?token=${tokenData.access_token}`;
+      // 3. Return the standard script to notify Decap CMS
+      const token = tokenData.access_token;
+      const provider = 'github';
       
-      return Response.redirect(redirectUrl, 302);
-    }
+      // This strict format "authorization:provider:success:json" is what Decap CMS expects
+      const message = `authorization:${provider}:success:${JSON.stringify({ token, provider })}`;
 
-    // Handle token refresh (if needed)
-    if (url.pathname === '/auth/refresh') {
-      return new Response('Not implemented', { status: 501 });
+      const html = `
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <script>
+          const message = '${message}';
+          // Send message to the main window (the CMS)
+          window.opener.postMessage(message, '*');
+          // Close this popup
+          window.close();
+        </script>
+        </body>
+        </html>
+      `;
+      
+      return new Response(html, {
+        headers: {
+          'Content-Type': 'text/html;charset=UTF-8',
+        },
+      });
     }
 
     return new Response('Not Found', { status: 404 });
   },
 };
-
