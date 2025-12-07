@@ -61,34 +61,12 @@ export default {
         });
       }
 
-      // 3. Return the standard script to notify Decap CMS
+      // 3. Redirect to the callback page on the main site (same-origin for reliable postMessage)
       const token = tokenData.access_token;
-      const provider = 'github';
+      const siteUrl = env.SITE_URL || 'https://healthhatch.co';
+      const redirectUrl = `${siteUrl}/admin/oauth-callback.html?token=${token}`;
       
-      // Standard Decap CMS message format
-      const message = `authorization:${provider}:success:${JSON.stringify({ token, provider })}`;
-
-      const html = `
-        <!DOCTYPE html>
-        <html>
-        <body>
-        <script>
-          const message = '${message}';
-          // Send message to the main window (the CMS)
-          // Using * allows this to work even if origins differ slightly, 
-          // but with custom domains matching, it will be secure naturally.
-          window.opener.postMessage(message, '*');
-          window.close();
-        </script>
-        </body>
-        </html>
-      `;
-      
-      return new Response(html, {
-        headers: {
-          'Content-Type': 'text/html;charset=UTF-8',
-        },
-      });
+      return Response.redirect(redirectUrl, 302);
     }
 
     return new Response('Not Found', { status: 404 });

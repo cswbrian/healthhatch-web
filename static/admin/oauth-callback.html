@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Authenticating...</title>
+</head>
+<body>
+  <p>Authenticating with GitHub...</p>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    const provider = 'github';
+
+    if (token) {
+      // Standard Decap CMS message format
+      const message = `authorization:${provider}:success:${JSON.stringify({ token, provider })}`;
+      
+      // Send message to the main window (the CMS) - same origin so this works reliably
+      if (window.opener) {
+        window.opener.postMessage(message, window.location.origin);
+        // Close this popup
+        setTimeout(() => {
+          window.close();
+        }, 100);
+      } else {
+        document.body.innerHTML = "<p>Error: Could not find the main window. Please close this and try again.</p>";
+      }
+    } else {
+      document.body.innerHTML = "<p>Error: No token received.</p>";
+    }
+  </script>
+</body>
+</html>
+
