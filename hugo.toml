@@ -1,4 +1,4 @@
-baseURL = 'https://example.com'
+baseURL = 'https://healthhatch-web.still-salad-f965.workers.dev'
 languageCode = 'zh-HK'
 title = 'HealthHatch Blog'
 theme = 'ananke'
