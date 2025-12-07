@@ -78,8 +78,10 @@ export default {
           const message = '${message}';
           // Send message to the main window (the CMS)
           window.opener.postMessage(message, '*');
-          // Close this popup
-          window.close();
+          // Close this popup after a short delay
+          setTimeout(() => {
+            window.close();
+          }, 100);
         </script>
         </body>
         </html>

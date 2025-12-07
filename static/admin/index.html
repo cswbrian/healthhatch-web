@@ -6,6 +6,18 @@
   <title>Content Manager</title>
 </head>
 <body>
+  <script>
+    // Debugging: Log all messages received from the worker
+    window.addEventListener("message", (event) => {
+      console.log("Received message:", event.data);
+      console.log("Origin:", event.origin);
+      
+      // Decap CMS expects: "authorization:provider:success:{token}"
+      if (typeof event.data === 'string' && event.data.startsWith('authorization:github:success:')) {
+        console.log("Authorization successful! Token received.");
+      }
+    });
+  </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
