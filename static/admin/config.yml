@@ -1,8 +1,10 @@
 backend:
-  name: git-gateway
-  branch: main # Branch to update (optional; defaults to main)
-  # Use GitHub OAuth for authentication
-  # You'll need to set up OAuth app in GitHub and add environment variables in Cloudflare Pages
+  name: github
+  repo: cswbrian/healthhatch-web
+  branch: main
+  base_url: https://healthhatch-web.pages.dev
+  auth_type: implicit
+  auth_scope: repo
 
 media_folder: "static/images/uploads" # Media files will be stored in the repo under static/images/uploads
 public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
