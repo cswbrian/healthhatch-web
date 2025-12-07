@@ -4,124 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
-  <!-- Disable auto-init so we can manually init with config -->
-  <script>window.CMS_MANUAL_INIT = true;</script>
+  <!-- Explicitly link to config to ensure discovery -->
+  <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url">
 </head>
 <body>
   <!-- Load Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   
+  <!-- Auth Token Handling -->
   <script>
-    // Hardcoded configuration to ensure reliable initialization
-    var config = {
-      backend: {
-        name: 'github',
-        repo: 'cswbrian/healthhatch-web',
-        branch: 'main',
-        base_url: 'https://auth.healthhatch.co',
-        auth_endpoint: '/auth',
-        auth_scope: 'repo'
-      },
-      media_folder: 'static/images/uploads',
-      public_folder: '/images/uploads',
-      collections: [
-        {
-          name: 'posts_zh_hk',
-          label: '文章 (繁體中文)',
-          folder: 'content/zh-hk/posts',
-          create: true,
-          slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
-          fields: [
-            {label: '標題', name: 'title', widget: 'string', required: true},
-            {label: '發布日期', name: 'date', widget: 'datetime', required: true},
-            {label: '描述', name: 'description', widget: 'text', required: false},
-            {label: '精選圖片', name: 'featured_image', widget: 'image', required: false},
-            {label: '標籤', name: 'tags', widget: 'list', required: false},
-            {label: '分類', name: 'categories', widget: 'list', required: false},
-            {label: '作者', name: 'author', widget: 'string', required: false},
-            {label: '草稿', name: 'draft', widget: 'boolean', default: true, required: false},
-            {label: '內容', name: 'body', widget: 'markdown', required: true}
-          ]
-        },
-        {
-          name: 'posts_en',
-          label: 'Posts (English)',
-          folder: 'content/en/posts',
-          create: true,
-          slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
-          fields: [
-            {label: 'Title', name: 'title', widget: 'string', required: true},
-            {label: 'Publish Date', name: 'date', widget: 'datetime', required: true},
-            {label: 'Description', name: 'description', widget: 'text', required: false},
-            {label: 'Featured Image', name: 'featured_image', widget: 'image', required: false},
-            {label: 'Tags', name: 'tags', widget: 'list', required: false},
-            {label: 'Categories', name: 'categories', widget: 'list', required: false},
-            {label: 'Author', name: 'author', widget: 'string', required: false},
-            {label: 'Draft', name: 'draft', widget: 'boolean', default: true, required: false},
-            {label: 'Body', name: 'body', widget: 'markdown', required: true}
-          ]
-        },
-        {
-          name: 'pages_zh_hk',
-          label: '頁面 (繁體中文)',
-          folder: 'content/zh-hk/pages',
-          create: true,
-          slug: '{{slug}}',
-          fields: [
-            {label: '標題', name: 'title', widget: 'string', required: true},
-            {label: '發布日期', name: 'date', widget: 'datetime', required: true},
-            {label: '描述', name: 'description', widget: 'text', required: false},
-            {label: '精選圖片', name: 'featured_image', widget: 'image', required: false},
-            {label: '草稿', name: 'draft', widget: 'boolean', default: true, required: false},
-            {label: '內容', name: 'body', widget: 'markdown', required: true}
-          ]
-        },
-        {
-          name: 'pages_en',
-          label: 'Pages (English)',
-          folder: 'content/en/pages',
-          create: true,
-          slug: '{{slug}}',
-          fields: [
-            {label: 'Title', name: 'title', widget: 'string', required: true},
-            {label: 'Publish Date', name: 'date', widget: 'datetime', required: true},
-            {label: 'Description', name: 'description', widget: 'text', required: false},
-            {label: 'Featured Image', name: 'featured_image', widget: 'image', required: false},
-            {label: 'Draft', name: 'draft', widget: 'boolean', default: true, required: false},
-            {label: 'Body', name: 'body', widget: 'markdown', required: true}
-          ]
-        }
-      ]
-    };
-
-    // Initialize CMS with the config object
-    var cmsInitialized = false;
-    
-    function initCMS() {
-      if (cmsInitialized) return;
-      
-      if (window.CMS) {
-        window.CMS.init({ config: config });
-        cmsInitialized = true;
-        console.log('CMS initialized manually with config object');
-      }
-    }
-
-    if (window.CMS) {
-      initCMS();
-    } else {
-      // Fallback if script loads slowly
-      window.onload = function() {
-        initCMS();
-      };
-    }
-    
-    // Auto-login fix: Listen for auth messages from popup
+    // Listen for auth messages from the popup (Worker -> Popup -> Here)
     window.addEventListener('message', function(event) {
       if (typeof event.data === 'string' && event.data.startsWith('authorization:')) {
-        console.log('Auth message received', event.data);
+        console.log('[AUTH] Authorization message received:', event.data);
         
-        // Force save token if CMS doesn't pick it up
+        // Parse the message to extract token
         try {
            const parts = event.data.split(':');
            if (parts.length >= 4) {
@@ -129,13 +26,23 @@
              const data = JSON.parse(dataStr);
              
              if (data.token) {
-               console.log('Saving token and reloading...');
-               const user = { token: data.token, backendName: 'github' };
+               console.log('[AUTH] Token found, saving to localStorage...');
+               // Save token where Decap CMS expects it
+               // Note: 'github' must match the backend name in config.yml
+               const user = { 
+                 token: data.token, 
+                 backendName: 'github'
+               };
                localStorage.setItem('netlify-cms-user', JSON.stringify(user));
+               
+               // Reload to force Decap CMS to pick up the session
+               console.log('[AUTH] Reloading page...');
                window.location.reload();
              }
            }
-        } catch(e) { console.error(e); }
+        } catch(e) {
+          console.error('[AUTH] Error processing token:', e);
+        }
       }
     });
   </script>
