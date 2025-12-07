@@ -16,12 +16,20 @@
       const message = `authorization:${provider}:success:${JSON.stringify({ token, provider })}`;
       
       // Send message to the main window (the CMS) - same origin so this works reliably
-      if (window.opener) {
+      if (window.opener && !window.opener.closed) {
+        console.log('Sending message to opener:', message);
+        // Try sending multiple times to ensure Decap CMS receives it
         window.opener.postMessage(message, window.location.origin);
-        // Close this popup
+        
+        // Also try with wildcard origin as fallback
+        setTimeout(() => {
+          window.opener.postMessage(message, '*');
+        }, 50);
+        
+        // Close this popup after a delay to ensure message is sent
         setTimeout(() => {
           window.close();
-        }, 100);
+        }, 500);
       } else {
         document.body.innerHTML = "<p>Error: Could not find the main window. Please close this and try again.</p>";
       }

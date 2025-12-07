@@ -6,6 +6,18 @@
   <title>Content Manager</title>
 </head>
 <body>
+  <script>
+    // Debug: Log all messages received
+    window.addEventListener('message', function(event) {
+      console.log('Admin page received message:', event.data);
+      console.log('From origin:', event.origin);
+      
+      // Check if it's an authorization message
+      if (typeof event.data === 'string' && event.data.startsWith('authorization:')) {
+        console.log('Authorization message detected!');
+      }
+    });
+  </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
