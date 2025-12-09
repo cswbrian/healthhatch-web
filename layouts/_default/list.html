@@ -1,0 +1,63 @@
+{{ define "main" }}
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-brand-green mb-4">{{ .Title }}</h1>
+        {{ if .Content }}
+          <div class="max-w-3xl mx-auto text-gray-700 prose prose-lg">
+            {{ .Content }}
+          </div>
+        {{ end }}
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {{ range .Paginator.Pages }}
+          <article class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
+            {{ if .Params.featured_image }}
+              <a href="{{ .RelPermalink }}">
+                <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" class="w-full h-48 object-cover">
+              </a>
+            {{ end }}
+            <div class="p-6">
+              <h2 class="text-xl font-bold text-gray-800 mb-2">
+                <a href="{{ .RelPermalink }}" class="hover:text-brand-green transition-colors">
+                  {{ .Title }}
+                </a>
+              </h2>
+              {{ if .Date }}
+                <time class="text-sm text-gray-500" datetime="{{ .Date.Format "2006-01-02" }}">
+                  {{ .Date.Format "January 2, 2006" }}
+                </time>
+              {{ end }}
+              {{ if .Summary }}
+                <p class="text-gray-600 mt-3 line-clamp-3">{{ .Summary }}</p>
+              {{ end }}
+              <a href="{{ .RelPermalink }}" class="inline-block mt-4 text-brand-green hover:text-brand-green/80 font-medium">
+                閱讀更多 →
+              </a>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+      
+      {{ if gt .Paginator.TotalPages 1 }}
+        <div class="flex justify-center mt-12 space-x-2">
+          {{ if .Paginator.HasPrev }}
+            <a href="{{ .Paginator.Prev.URL }}" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">
+              上一頁
+            </a>
+          {{ end }}
+          <span class="px-4 py-2 text-gray-700">
+            第 {{ .Paginator.PageNumber }} 頁，共 {{ .Paginator.TotalPages }} 頁
+          </span>
+          {{ if .Paginator.HasNext }}
+            <a href="{{ .Paginator.Next.URL }}" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">
+              下一頁
+            </a>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}
+

@@ -2,5 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles can be added here */
+/* Custom styles */
+@layer components {
+  .btn-primary {
+    @apply bg-brand-green text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-brand-green/90 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-brand-orange text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-brand-orange/90 shadow-md hover:shadow-lg;
+  }
+  
+  .service-card {
+    @apply bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+  
+  .hero-bg-shape {
+    @apply absolute rounded-full opacity-20 blur-3xl;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+}
 

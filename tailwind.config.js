@@ -3,10 +3,27 @@ module.exports = {
   content: [
     './layouts/**/*.html',
     './content/**/*.md',
-    './themes/ananke/layouts/**/*.html',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'brand-green': {
+          DEFAULT: '#2d5016',
+          light: '#a8d5a3',
+          lighter: '#e8f5e6',
+        },
+        'brand-orange': {
+          DEFAULT: '#f97316',
+          light: '#fb923c',
+        },
+        'brand-blue': {
+          light: '#93c5fd',
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }

@@ -1,0 +1,58 @@
+{{ define "main" }}
+  <article class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <header class="mb-8">
+        {{ if .CurrentSection }}
+          <div class="text-sm text-brand-green font-semibold mb-2 uppercase tracking-wide">
+            {{ .CurrentSection.Title }}
+          </div>
+        {{ end }}
+        
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          {{ .Title }}
+        </h1>
+        
+        <div class="flex flex-wrap items-center gap-4 text-gray-600 text-sm">
+          {{ if .Date }}
+            <time datetime="{{ .Date.Format "2006-01-02" }}">
+              {{ .Date.Format "January 2, 2006" }}
+            </time>
+          {{ end }}
+          
+          {{ with .Params.author | default .Site.Params.author }}
+            <span>•</span>
+            <span>作者: <strong>{{ . }}</strong></span>
+          {{ end }}
+          
+          {{ if .ReadingTime }}
+            <span>•</span>
+            <span>閱讀時間: {{ .ReadingTime }} 分鐘</span>
+          {{ end }}
+        </div>
+      </header>
+      
+      {{ if .Params.featured_image }}
+        <div class="mb-8">
+          <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" class="w-full rounded-lg shadow-lg">
+        </div>
+      {{ end }}
+      
+      <div class="prose prose-lg max-w-none text-gray-700">
+        {{ .Content }}
+      </div>
+      
+      {{ if .Params.tags }}
+        <div class="mt-8 pt-8 border-t border-gray-200">
+          <div class="flex flex-wrap gap-2">
+            {{ range .Params.tags }}
+              <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-brand-green hover:text-white transition-colors">
+                {{ . }}
+              </a>
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </article>
+{{ end }}
+

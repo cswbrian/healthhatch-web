@@ -1,0 +1,76 @@
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <nav class="container mx-auto px-4 py-4" role="navigation">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="{{ .Site.Home.RelPermalink }}" class="flex items-center space-x-2 no-underline">
+        <div class="flex items-center space-x-1">
+          <div class="w-10 h-10 bg-brand-green rounded flex items-center justify-center">
+            <span class="text-white font-bold text-xl">H</span>
+          </div>
+          <div class="w-6 h-6 bg-brand-green rounded flex items-center justify-center">
+            <span class="text-white font-bold text-xs">H</span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-brand-green font-bold text-lg leading-tight">健康籽</span>
+          <span class="text-gray-500 text-xs leading-tight">HEALTH HATCH</span>
+        </div>
+      </a>
+      
+      <!-- Navigation Menu -->
+      <div class="hidden md:flex items-center space-x-6">
+        {{ if .Site.Menus.main }}
+          <ul class="flex items-center space-x-6 list-none m-0 p-0">
+            {{ range .Site.Menus.main }}
+            <li>
+              <a class="text-gray-700 hover:text-brand-green no-underline font-medium transition-colors duration-200 {{ if eq .Identifier "posts" }}text-red-600{{ end }}" 
+                 href="{{ .URL }}" 
+                 title="{{ .Name }}">
+                {{ .Name }}
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-gray-700" id="mobile-menu-button" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="hidden md:hidden mt-4 pb-4" id="mobile-menu">
+      {{ if .Site.Menus.main }}
+        <ul class="flex flex-col space-y-3 list-none m-0 p-0">
+          {{ range .Site.Menus.main }}
+          <li>
+            <a class="text-gray-700 hover:text-brand-green no-underline font-medium block py-2 {{ if eq .Identifier "posts" }}text-red-600{{ end }}" 
+               href="{{ .URL }}" 
+               title="{{ .Name }}">
+              {{ .Name }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Simple mobile menu toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const button = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    if (button && menu) {
+      button.addEventListener('click', function() {
+        menu.classList.toggle('hidden');
+      });
+    }
+  });
+</script>
+
