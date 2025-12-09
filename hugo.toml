@@ -41,7 +41,7 @@ defaultContentLanguageInSubdir = false
     weight = 4
   [[menu.main]]
     identifier = 'consultation'
-    name = '健康咨詢'
+    name = '健康諮詢'
     url = '/consultation/'
     weight = 5
   [[menu.main]]
@@ -72,7 +72,7 @@ defaultContentLanguageInSubdir = false
   weight = 4
 [[languages.zh-HK.menu.main]]
   identifier = 'consultation'
-  name = '健康咨詢'
+  name = '健康諮詢'
   url = '/consultation/'
   weight = 5
 [[languages.zh-HK.menu.main]]

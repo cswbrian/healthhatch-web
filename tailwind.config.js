@@ -16,8 +16,8 @@ module.exports = {
           DEFAULT: '#f97316',
           light: '#fb923c',
         },
-        'brand-blue': {
-          light: '#93c5fd',
+        'brand-yellow': {
+          light: '#fde68a',
         },
       },
       fontFamily: {
