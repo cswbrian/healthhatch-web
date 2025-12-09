@@ -10,10 +10,10 @@ media_folder: "static/images/uploads" # Media files will be stored in the repo u
 public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
 
 collections:
-  # Blog Posts - Traditional Chinese (Hong Kong) - Default Language
-  - name: "posts_zh_hk"
+  # Updates - Traditional Chinese (Hong Kong) - Default Language
+  - name: "updates_zh_hk"
     label: "文章 (繁體中文)"
-    folder: "content/zh-hk/posts"
+    folder: "content/zh-hk/updates"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -27,10 +27,10 @@ collections:
       - {label: "草稿", name: "draft", widget: "boolean", default: true, required: false}
       - {label: "內容", name: "body", widget: "markdown", required: true}
 
-  # Blog Posts - English
-  - name: "posts_en"
-    label: "Posts (English)"
-    folder: "content/en/posts"
+  # Updates - English
+  - name: "updates_en"
+    label: "Updates (English)"
+    folder: "content/en/updates"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:

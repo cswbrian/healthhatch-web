@@ -89,13 +89,13 @@
     </div>
   </section>
 
-  <!-- Optional: Recent Posts Section (if enabled) -->
-  {{ $mainSections := site.Params.mainSections | compare.Default (collections.Slice "post") }}
-  {{ $show_recent_posts := site.Params.show_recent_posts | default true }}
+  <!-- Optional: Recent Updates Section (if enabled) -->
+  {{ $mainSections := site.Params.mainSections | compare.Default (collections.Slice "updates") }}
+  {{ $show_recent_updates := site.Params.show_recent_updates | default true }}
   {{ $section := collections.Where $.Site.RegularPages "Section" "in" $mainSections }}
   {{ $section_count := len $section }}
 
-  {{ if and ($show_recent_posts) (compare.Ge $section_count 1) }}
+  {{ if and ($show_recent_updates) (compare.Ge $section_count 1) }}
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
@@ -106,9 +106,9 @@
         </div>
         
         <div class="max-w-6xl mx-auto">
-          {{ $n_posts := $.Param "recent_posts_number" | compare.Default 3 }}
+          {{ $n_updates := $.Param "recent_updates_number" | compare.Default 3 }}
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {{ range (collections.First $n_posts $section) }}
+            {{ range (collections.First $n_updates $section) }}
               <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
                 {{ .Render "summary-with-image" }}
               </div>

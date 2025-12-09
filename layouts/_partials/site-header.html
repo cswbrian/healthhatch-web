@@ -28,7 +28,7 @@
           <ul class="flex items-center space-x-6 list-none m-0 p-0">
             {{ range .Site.Menus.main }}
             <li>
-              <a class="text-gray-700 hover:text-brand-green no-underline font-bold transition-colors duration-200 {{ if eq .Identifier "posts" }}text-red-600{{ end }}" 
+              <a class="text-gray-700 hover:text-brand-green no-underline font-bold transition-colors duration-200 {{ if eq .Identifier "updates" }}text-red-600{{ end }}" 
                  href="{{ .URL }}" 
                  title="{{ .Name }}">
                 {{ .Name }}
@@ -37,6 +37,62 @@
             {{ end }}
           </ul>
         {{ end }}
+        
+        <!-- Language Switcher -->
+        <div class="relative ml-4">
+          <button 
+            id="lang-switcher-button"
+            class="flex items-center space-x-1 text-gray-700 hover:text-brand-green font-bold transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50"
+            aria-label="Language selector"
+            aria-expanded="false"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+            </svg>
+            <span>{{ .Site.Language.LanguageName }}</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          
+          <div 
+            id="lang-switcher-dropdown"
+            class="hidden absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50"
+          >
+            <div class="py-1">
+              {{ range .Site.Languages }}
+                {{ $isCurrentLang := eq .Lang $.Site.Language.Lang }}
+                {{ $targetLang := .Lang }}
+                {{ $targetURL := "" }}
+                {{ if $isCurrentLang }}
+                  {{ $targetURL = $.RelPermalink }}
+                {{ else }}
+                  {{ if $.IsPage }}
+                    {{ $translation := index (where $.Translations "Language.Lang" $targetLang) 0 }}
+                    {{ if $translation }}
+                      {{ $targetURL = $translation.RelPermalink }}
+                    {{ else }}
+                      {{ $targetURL = $.Site.Home.RelPermalink }}
+                    {{ end }}
+                  {{ else }}
+                    {{ $defaultLang := index $.Site.Languages 0 }}
+                    {{ if eq $targetLang $defaultLang.Lang }}
+                      {{ $targetURL = "/" }}
+                    {{ else }}
+                      {{ $targetURL = printf "/%s/" $targetLang }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+                <a 
+                  href="{{ $targetURL }}"
+                  class="block px-4 py-2 text-sm {{ if $isCurrentLang }}text-brand-green font-semibold bg-gray-50{{ else }}text-gray-700 hover:bg-gray-50{{ end }} transition-colors duration-150"
+                >
+                  {{ .LanguageName }}
+                </a>
+              {{ end }}
+            </div>
+          </div>
+        </div>
       </div>
       
       <!-- Mobile Menu Button -->
@@ -53,7 +109,7 @@
         <ul class="flex flex-col space-y-3 list-none m-0 p-0">
           {{ range .Site.Menus.main }}
           <li>
-            <a class="text-gray-700 hover:text-brand-green no-underline font-medium block py-2 {{ if eq .Identifier "posts" }}text-red-600{{ end }}" 
+            <a class="text-gray-700 hover:text-brand-green no-underline font-medium block py-2 {{ if eq .Identifier "updates" }}text-red-600{{ end }}" 
                href="{{ .URL }}" 
                title="{{ .Name }}">
               {{ .Name }}
@@ -62,6 +118,48 @@
           {{ end }}
         </ul>
       {{ end }}
+      
+      <!-- Mobile Language Switcher -->
+      <div class="mt-4 pt-4 border-t border-gray-200">
+        <div class="flex items-center space-x-2 mb-2">
+          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+          </svg>
+          <span class="text-gray-600 font-medium text-sm">Language</span>
+        </div>
+        <div class="flex flex-col space-y-2">
+          {{ range .Site.Languages }}
+            {{ $isCurrentLang := eq .Lang $.Site.Language.Lang }}
+            {{ $targetLang := .Lang }}
+            {{ $targetURL := "" }}
+            {{ if $isCurrentLang }}
+              {{ $targetURL = $.RelPermalink }}
+            {{ else }}
+              {{ if $.IsPage }}
+                {{ $translation := index (where $.Translations "Language.Lang" $targetLang) 0 }}
+                {{ if $translation }}
+                  {{ $targetURL = $translation.RelPermalink }}
+                {{ else }}
+                  {{ $targetURL = $.Site.Home.RelPermalink }}
+                {{ end }}
+              {{ else }}
+                {{ $defaultLang := index $.Site.Languages 0 }}
+                {{ if eq $targetLang $defaultLang.Lang }}
+                  {{ $targetURL = "/" }}
+                {{ else }}
+                  {{ $targetURL = printf "/%s/" $targetLang }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+            <a 
+              href="{{ $targetURL }}"
+              class="text-gray-700 hover:text-brand-green no-underline font-medium block py-2 {{ if $isCurrentLang }}text-brand-green font-semibold{{ end }}"
+            >
+              {{ .LanguageName }}
+            </a>
+          {{ end }}
+        </div>
+      </div>
     </div>
   </nav>
 </header>
@@ -74,6 +172,26 @@
     if (button && menu) {
       button.addEventListener('click', function() {
         menu.classList.toggle('hidden');
+      });
+    }
+    
+    // Language switcher dropdown toggle
+    const langButton = document.getElementById('lang-switcher-button');
+    const langDropdown = document.getElementById('lang-switcher-dropdown');
+    if (langButton && langDropdown) {
+      langButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        langDropdown.classList.toggle('hidden');
+        const isExpanded = langDropdown.classList.contains('hidden') ? 'false' : 'true';
+        langButton.setAttribute('aria-expanded', isExpanded);
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!langButton.contains(e.target) && !langDropdown.contains(e.target)) {
+          langDropdown.classList.add('hidden');
+          langButton.setAttribute('aria-expanded', 'false');
+        }
       });
     }
   });
