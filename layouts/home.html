@@ -11,20 +11,38 @@
     <div class="container mx-auto px-4 py-16 relative z-10">
       <div class="max-w-4xl">
         <h1 class="text-6xl font-bold text-brand-green mb-6 leading-tight text-left">
-          連結健康<br />
-          由個人到社區
+          {{ if eq .Site.Language.Lang "en" }}
+            Connecting Health<br />
+            From Individual to Community
+          {{ else }}
+            連結健康<br />
+            由個人到社區
+          {{ end }}
         </h1>
         
         <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl leading-relaxed">
-          Health Hatch 致力於推廣全人健康（從生理到心理），無論你是尋求協助的個人，還是希望提升員工福祉的企業，我們都有專業的方案。
+          {{ if eq .Site.Language.Lang "en" }}
+            Health Hatch is dedicated to promoting holistic health (from physical to mental). Whether you are an individual seeking assistance or an enterprise looking to enhance employee well-being, we have professional solutions.
+          {{ else }}
+            Health Hatch 致力於推廣全人健康（從生理到心理），無論你是尋求協助的個人，還是希望提升員工福祉的企業，我們都有專業的方案。
+          {{ end }}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 items-start">
-          <a href="/individual-services/" class="btn-primary">
-            個人服務預約
-          </a>
-          <a href="/enterprise-solutions/" class="btn-secondary">
-            企業方案查詢
-          </a>
+          {{ if eq .Site.Language.Lang "en" }}
+            <a href="/individual-services/" class="btn-primary">
+              Book Individual Services
+            </a>
+            <a href="/enterprise-solutions/" class="btn-secondary">
+              Inquire About Enterprise Solutions
+            </a>
+          {{ else }}
+            <a href="/zh-hk/individual-services/" class="btn-primary">
+              個人服務預約
+            </a>
+            <a href="/zh-hk/enterprise-solutions/" class="btn-secondary">
+              企業方案查詢
+            </a>
+          {{ end }}
         </div>
       </div>
     </div>
@@ -35,7 +53,11 @@
     <div class="container mx-auto px-4">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-brand-green mb-4">
-          我們的核心服務
+          {{ if eq .Site.Language.Lang "en" }}
+            Our Core Services
+          {{ else }}
+            我們的核心服務
+          {{ end }}
         </h2>
         <div class="w-24 h-1 bg-brand-green mx-auto"></div>
       </div>
@@ -49,10 +71,18 @@
             </svg>
           </div>
           <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-            跨專業精準評估
+            {{ if eq .Site.Language.Lang "en" }}
+              Cross-Professional Precision Assessment
+            {{ else }}
+              跨專業精準評估
+            {{ end }}
           </h3>
           <p class="text-gray-600 text-center leading-relaxed">
-            由註冊護士、營養師及社工組成的專業團隊,透過臨床數據及生活習慣評估,為你提供精準的健康問題洞察。
+            {{ if eq .Site.Language.Lang "en" }}
+              Our professional team of registered nurses, nutritionists, and social workers provides precise health insights through clinical data and lifestyle assessments.
+            {{ else }}
+              由註冊護士、營養師及社工組成的專業團隊,透過臨床數據及生活習慣評估,為你提供精準的健康問題洞察。
+            {{ end }}
           </p>
         </div>
         
@@ -64,10 +94,18 @@
             </svg>
           </div>
           <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-            醫學實證定制方案
+            {{ if eq .Site.Language.Lang "en" }}
+              Evidence-Based Customized Solutions
+            {{ else }}
+              醫學實證定制方案
+            {{ end }}
           </h3>
           <p class="text-gray-600 text-center leading-relaxed">
-            拒絕模板化方案,根據個人生活習慣及身體指標,定制可行且有效的健康計劃,並以醫學實證為基礎。
+            {{ if eq .Site.Language.Lang "en" }}
+              We reject templated solutions. Based on individual lifestyle habits and body indicators, we create feasible and effective health plans grounded in medical evidence.
+            {{ else }}
+              拒絕模板化方案,根據個人生活習慣及身體指標,定制可行且有效的健康計劃,並以醫學實證為基礎。
+            {{ end }}
           </p>
         </div>
         
@@ -79,10 +117,18 @@
             </svg>
           </div>
           <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-            數據化持續追蹤
+            {{ if eq .Site.Language.Lang "en" }}
+              Data-Driven Continuous Tracking
+            {{ else }}
+              數據化持續追蹤
+            {{ end }}
           </h3>
           <p class="text-gray-600 text-center leading-relaxed">
-            運用數據定期檢視進度,提供個人化跟進及情緒支援,陪伴你走過整個健康改善旅程。
+            {{ if eq .Site.Language.Lang "en" }}
+              We use data to regularly review progress, provide personalized follow-up and emotional support, accompanying you through your entire health improvement journey.
+            {{ else }}
+              運用數據定期檢視進度,提供個人化跟進及情緒支援,陪伴你走過整個健康改善旅程。
+            {{ end }}
           </p>
         </div>
       </div>
@@ -100,7 +146,11 @@
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold text-brand-green mb-4">
-            最新消息
+            {{ if eq .Site.Language.Lang "en" }}
+              Latest Updates
+            {{ else }}
+              最新消息
+            {{ end }}
           </h2>
           <div class="w-24 h-1 bg-brand-green mx-auto"></div>
         </div>

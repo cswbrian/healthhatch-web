@@ -31,35 +31,40 @@ defaultContentLanguageInSubdir = false
     weight = 2
 
 [[languages.zh-HK.menu.main]]
+  identifier = 'home'
+  name = '首頁'
+  url = '/zh-hk/'
+  weight = 1
+[[languages.zh-HK.menu.main]]
   identifier = 'about'
   name = '關於我們'
   url = '/zh-hk/about/'
-  weight = 1
+  weight = 2
 [[languages.zh-HK.menu.main]]
   identifier = 'services'
   name = '我們的服務'
   url = '/zh-hk/services/'
-  weight = 2
+  weight = 3
 [[languages.zh-HK.menu.main]]
   identifier = 'individual'
   name = '個人服務'
   url = '/zh-hk/individual-services/'
-  weight = 3
+  weight = 4
 [[languages.zh-HK.menu.main]]
   identifier = 'enterprise'
   name = '企業方案'
   url = '/zh-hk/enterprise-solutions/'
-  weight = 4
+  weight = 5
 [[languages.zh-HK.menu.main]]
   identifier = 'consultation'
   name = '健康諮詢'
   url = '/zh-hk/consultation/'
-  weight = 5
+  weight = 6
 [[languages.zh-HK.menu.main]]
   identifier = 'updates'
   name = '最新消息'
   url = '/zh-hk/updates/'
-  weight = 6
+  weight = 7
 
 [[languages.en.menu.main]]
   identifier = 'home'
