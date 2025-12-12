@@ -28,7 +28,7 @@
           <ul class="flex items-center space-x-6 list-none m-0 p-0">
             {{ range .Site.Menus.main }}
             <li>
-              <a class="text-gray-700 hover:text-brand-green no-underline font-bold transition-colors duration-200 {{ if eq .Identifier "updates" }}text-red-600{{ end }}" 
+              <a class="text-gray-700 hover:text-brand-green no-underline transition-colors duration-200 {{ if eq .Identifier "updates" }}text-red-600{{ end }}" 
                  href="{{ .URL }}" 
                  title="{{ .Name }}">
                 {{ .Name }}

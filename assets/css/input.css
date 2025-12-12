@@ -15,15 +15,17 @@
   .service-card {
     @apply bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-200;
   }
-  
-  .hero-bg-shape {
-    @apply absolute rounded-full opacity-20 blur-3xl;
-  }
 }
 
 @layer utilities {
   .text-shadow {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
   }
+}
+
+/* Apply Huninn font for Chinese language pages */
+html[lang="zh-HK"] body,
+html[lang="zh-hk"] body {
+  font-family: 'Huninn', 'Unbounded', system-ui, sans-serif;
 }
 

@@ -21,7 +21,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Unbounded', 'system-ui', 'sans-serif'],
+        chinese: ['Huninn', 'Unbounded', 'system-ui', 'sans-serif'],
       },
     },
   },
