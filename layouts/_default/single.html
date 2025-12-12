@@ -19,15 +19,6 @@
             </time>
           {{ end }}
           
-          {{ with .Params.author | default .Site.Params.author }}
-            <span>•</span>
-            <span>作者: <strong>{{ . }}</strong></span>
-          {{ end }}
-          
-          {{ if .ReadingTime }}
-            <span>•</span>
-            <span>閱讀時間: {{ .ReadingTime }} 分鐘</span>
-          {{ end }}
         </div>
       </header>
       

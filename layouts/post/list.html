@@ -12,31 +12,40 @@
         </div>
       {{ end }}
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {{ range .Paginator.Pages }}
           <article class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
             {{ if .Params.featured_image }}
               <a href="{{ .RelPermalink }}">
-                <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" class="w-full h-48 object-cover">
+                <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" class="w-full h-64 object-cover">
               </a>
             {{ end }}
             <div class="p-6">
-              <h2 class="text-xl font-bold text-gray-800 mb-2">
+              <h2 class="text-xl font-bold text-gray-800 mb-3">
                 <a href="{{ .RelPermalink }}" class="hover:text-brand-green transition-colors">
                   {{ .Title }}
                 </a>
               </h2>
-              {{ if .Date }}
-                <time class="text-sm text-gray-500" datetime="{{ .Date.Format "2006-01-02" }}">
-                  {{ .Date.Format "January 2, 2006" }}
-                </time>
-              {{ end }}
-              {{ if .Summary }}
-                <p class="text-gray-600 mt-3 line-clamp-3">{{ .Summary }}</p>
-              {{ end }}
-              <a href="{{ .RelPermalink }}" class="inline-block mt-4 text-brand-green hover:text-brand-green/80 font-medium">
-                閱讀更多 →
-              </a>
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                {{ if .Date }}
+                  <time class="text-sm text-gray-500" datetime="{{ .Date.Format "2006-01-02" }}">
+                    {{ if eq .Site.Language.Lang "en" }}
+                      {{ .Date.Format "January 2, 2006" }}
+                    {{ else }}
+                      {{ .Date.Format "2006年1月2日" }}
+                    {{ end }}
+                  </time>
+                {{ end }}
+                {{ if .Params.tags }}
+                  <div class="flex flex-wrap gap-2">
+                    {{ range first 2 .Params.tags }}
+                      <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                        {{ . }}
+                      </span>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </div>
             </div>
           </article>
         {{ end }}
@@ -46,15 +55,19 @@
         <div class="flex justify-center mt-12 space-x-2">
           {{ if .Paginator.HasPrev }}
             <a href="{{ .Paginator.Prev.URL }}" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">
-              上一頁
+              {{ if eq .Site.Language.Lang "en" }}Previous{{ else }}上一頁{{ end }}
             </a>
           {{ end }}
           <span class="px-4 py-2 text-gray-700">
-            第 {{ .Paginator.PageNumber }} 頁，共 {{ .Paginator.TotalPages }} 頁
+            {{ if eq .Site.Language.Lang "en" }}
+              Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}
+            {{ else }}
+              第 {{ .Paginator.PageNumber }} 頁，共 {{ .Paginator.TotalPages }} 頁
+            {{ end }}
           </span>
           {{ if .Paginator.HasNext }}
             <a href="{{ .Paginator.Next.URL }}" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">
-              下一頁
+              {{ if eq .Site.Language.Lang "en" }}Next{{ else }}下一頁{{ end }}
             </a>
           {{ end }}
         </div>
