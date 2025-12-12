@@ -691,34 +691,62 @@ video {
 .markdown-content {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
-  font-size: 1.125rem;
-  /* 18px base */
+  font-size: 1rem;
+  /* 16px base on mobile */
   line-height: 1.75;
   /* 28px line height */
+}
+
+@media (min-width: 768px) {
+  .markdown-content {
+    font-size: 1.125rem;
+    /* 18px base on desktop */
+  }
 }
 
 /* ========== HEADINGS ========== */
 
 .markdown-content h1 {
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  font-weight: 700;
-  line-height: 1.25;
-  --tw-text-opacity: 1;
-  color: rgb(45 80 22 / var(--tw-text-opacity, 1));
-}
-
-.markdown-content h2 {
-  margin-top: 2rem;
-  margin-bottom: 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
   font-size: 1.875rem;
   line-height: 2.25rem;
   font-weight: 700;
   line-height: 1.25;
   --tw-text-opacity: 1;
   color: rgb(45 80 22 / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 768px) {
+  .markdown-content h1 {
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+.markdown-content h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  --tw-text-opacity: 1;
+  color: rgb(45 80 22 / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 768px) {
+  .markdown-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+.markdown-content h2 {
   border-bottom-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(168 213 163 / var(--tw-border-opacity, 1));
@@ -726,18 +754,7 @@ video {
 }
 
 .markdown-content h3 {
-  margin-top: 1.75rem;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  font-weight: 600;
-  line-height: 1.25;
-  --tw-text-opacity: 1;
-  color: rgb(45 80 22 / var(--tw-text-opacity, 1));
-}
-
-.markdown-content h4 {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   margin-bottom: 0.75rem;
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -747,18 +764,36 @@ video {
   color: rgb(45 80 22 / var(--tw-text-opacity, 1));
 }
 
-.markdown-content h5 {
-  margin-top: 1.25rem;
-  margin-bottom: 0.75rem;
+@media (min-width: 768px) {
+  .markdown-content h3 {
+    margin-top: 1.75rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+.markdown-content h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
   font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 600;
   line-height: 1.25;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
+  color: rgb(45 80 22 / var(--tw-text-opacity, 1));
 }
 
-.markdown-content h6 {
+@media (min-width: 768px) {
+  .markdown-content h4 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+.markdown-content h5 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-size: 1rem;
@@ -766,7 +801,38 @@ video {
   font-weight: 600;
   line-height: 1.25;
   --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 768px) {
+  .markdown-content h5 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+.markdown-content h6 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  line-height: 1.25;
+  --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 768px) {
+  .markdown-content h6 {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+.markdown-content h6 {
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -774,9 +840,18 @@ video {
 /* ========== PARAGRAPHS ========== */
 
 .markdown-content p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 768px) {
+  .markdown-content p {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.markdown-content p {
   line-height: 1.75;
 }
 
@@ -784,8 +859,16 @@ video {
 
 .markdown-content ul,
   .markdown-content ol {
-  margin-bottom: 1.5rem;
-  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+@media (min-width: 768px) {
+  .markdown-content ul,
+  .markdown-content ol {
+    margin-bottom: 1.5rem;
+    margin-left: 1.5rem;
+  }
 }
 
 .markdown-content ul {
@@ -797,9 +880,18 @@ video {
 }
 
 .markdown-content li {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 768px) {
+  .markdown-content li {
+    margin-bottom: 0.75rem;
+  }
+}
+
+.markdown-content li {
   line-height: 1.75;
 }
 
@@ -880,15 +972,25 @@ video {
 /* ========== CODE BLOCKS ========== */
 
 .markdown-content pre {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   overflow-x: auto;
   border-radius: 0.5rem;
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
-  padding: 1.5rem;
+  padding: 1rem;
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity, 1));
-  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .markdown-content pre {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+  }
+}
+
+.markdown-content pre {
+  font-size: 0.875rem;
   line-height: 1.6;
 }
 
@@ -903,18 +1005,30 @@ video {
 /* ========== BLOCKQUOTES ========== */
 
 .markdown-content blockquote {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   border-left-width: 4px;
   --tw-border-opacity: 1;
   border-color: rgb(45 80 22 / var(--tw-border-opacity, 1));
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  padding-left: 1.5rem;
-  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-right: 0.75rem;
   font-style: italic;
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 768px) {
+  .markdown-content blockquote {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+  }
+}
+
+.markdown-content blockquote {
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
   --tw-bg-opacity: 1;
@@ -932,13 +1046,23 @@ video {
 /* ========== IMAGES ========== */
 
 .markdown-content img {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   width: 100%;
   border-radius: 0.5rem;
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+@media (min-width: 768px) {
+  .markdown-content img {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.markdown-content img {
   max-width: 100%;
   height: auto;
 }
@@ -958,11 +1082,21 @@ video {
 /* ========== TABLES ========== */
 
 .markdown-content table {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   display: block;
   width: 100%;
   border-collapse: collapse;
   overflow-x: auto;
+}
+
+@media (min-width: 768px) {
+  .markdown-content table {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.markdown-content table {
+  font-size: 0.875rem;
 }
 
 .markdown-content table thead {
@@ -1017,12 +1151,19 @@ video {
 /* ========== HORIZONTAL RULES ========== */
 
 .markdown-content hr {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   border-width: 0px;
   border-top-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
+}
+
+@media (min-width: 768px) {
+  .markdown-content hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
 }
 
 /* ========== FIRST/LAST CHILD ADJUSTMENTS ========== */
@@ -1454,6 +1595,11 @@ video {
   padding-bottom: 1rem;
 }
 
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -1732,6 +1878,11 @@ html[lang="zh-hk"] body {
   .sm\:flex-row {
     flex-direction: row;
   }
+
+  .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1749,6 +1900,11 @@ html[lang="zh-hk"] body {
 
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 
   .md\:py-24 {
@@ -1774,6 +1930,13 @@ html[lang="zh-hk"] body {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 }
 

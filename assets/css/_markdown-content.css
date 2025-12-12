@@ -9,48 +9,54 @@
   /* Base markdown content container */
   .markdown-content {
     @apply text-gray-700 leading-relaxed;
-    font-size: 1.125rem; /* 18px base */
+    font-size: 1rem; /* 16px base on mobile */
     line-height: 1.75; /* 28px line height */
+  }
+  
+  @media (min-width: 768px) {
+    .markdown-content {
+      font-size: 1.125rem; /* 18px base on desktop */
+    }
   }
 
   /* ========== HEADINGS ========== */
   .markdown-content h1 {
-    @apply text-4xl font-bold text-brand-green mt-10 mb-6 leading-tight;
+    @apply text-3xl md:text-4xl font-bold text-brand-green mt-6 md:mt-10 mb-4 md:mb-6 leading-tight;
   }
 
   .markdown-content h2 {
-    @apply text-3xl font-bold text-brand-green mt-8 mb-5 leading-tight;
+    @apply text-2xl md:text-3xl font-bold text-brand-green mt-6 md:mt-8 mb-4 md:mb-5 leading-tight;
     @apply border-b-2 border-brand-green-light pb-2;
   }
 
   .markdown-content h3 {
-    @apply text-2xl font-semibold text-brand-green mt-7 mb-4 leading-tight;
+    @apply text-xl md:text-2xl font-semibold text-brand-green mt-5 md:mt-7 mb-3 md:mb-4 leading-tight;
   }
 
   .markdown-content h4 {
-    @apply text-xl font-semibold text-brand-green mt-6 mb-3 leading-tight;
+    @apply text-lg md:text-xl font-semibold text-brand-green mt-4 md:mt-6 mb-2 md:mb-3 leading-tight;
   }
 
   .markdown-content h5 {
-    @apply text-lg font-semibold text-gray-800 mt-5 mb-3 leading-tight;
+    @apply text-base md:text-lg font-semibold text-gray-800 mt-4 md:mt-5 mb-2 md:mb-3 leading-tight;
   }
 
   .markdown-content h6 {
-    @apply text-base font-semibold text-gray-700 mt-4 mb-2 leading-tight;
+    @apply text-sm md:text-base font-semibold text-gray-700 mt-3 md:mt-4 mb-2 leading-tight;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
   /* ========== PARAGRAPHS ========== */
   .markdown-content p {
-    @apply mb-6 text-gray-700;
+    @apply mb-4 md:mb-6 text-gray-700;
     line-height: 1.75;
   }
 
   /* ========== LISTS ========== */
   .markdown-content ul,
   .markdown-content ol {
-    @apply mb-6 ml-6;
+    @apply mb-4 md:mb-6 ml-4 md:ml-6;
   }
 
   .markdown-content ul {
@@ -62,7 +68,7 @@
   }
 
   .markdown-content li {
-    @apply mb-3 text-gray-700;
+    @apply mb-2 md:mb-3 text-gray-700;
     line-height: 1.75;
   }
 
@@ -115,8 +121,8 @@
 
   /* ========== CODE BLOCKS ========== */
   .markdown-content pre {
-    @apply bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto mb-6;
-    font-size: 0.9rem;
+    @apply bg-gray-900 text-gray-100 p-4 md:p-6 rounded-lg overflow-x-auto mb-4 md:mb-6;
+    font-size: 0.875rem;
     line-height: 1.6;
   }
 
@@ -127,7 +133,7 @@
 
   /* ========== BLOCKQUOTES ========== */
   .markdown-content blockquote {
-    @apply border-l-4 border-brand-green pl-6 pr-4 py-2 my-6 italic text-gray-600;
+    @apply border-l-4 border-brand-green pl-4 md:pl-6 pr-3 md:pr-4 py-2 my-4 md:my-6 italic text-gray-600;
     @apply bg-brand-green-lighter rounded-r-lg;
   }
 
@@ -141,7 +147,7 @@
 
   /* ========== IMAGES ========== */
   .markdown-content img {
-    @apply w-full rounded-lg shadow-md my-8;
+    @apply w-full rounded-lg shadow-md my-4 md:my-8;
     max-width: 100%;
     height: auto;
   }
@@ -153,7 +159,8 @@
 
   /* ========== TABLES ========== */
   .markdown-content table {
-    @apply w-full border-collapse mb-6 overflow-x-auto block;
+    @apply w-full border-collapse mb-4 md:mb-6 overflow-x-auto block;
+    font-size: 0.875rem;
   }
 
   .markdown-content table thead {
@@ -184,7 +191,7 @@
 
   /* ========== HORIZONTAL RULES ========== */
   .markdown-content hr {
-    @apply border-0 border-t-2 border-gray-200 my-8;
+    @apply border-0 border-t-2 border-gray-200 my-6 md:my-8;
   }
 
   /* ========== FIRST/LAST CHILD ADJUSTMENTS ========== */
