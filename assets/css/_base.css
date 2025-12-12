@@ -1,0 +1,10 @@
+/* ============================================
+   BASE STYLES
+   ============================================
+   Tailwind directives and base configuration
+   ============================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+

@@ -1,0 +1,22 @@
+/* ============================================
+   COMPONENTS
+   ============================================
+   Reusable UI components: buttons, cards, etc.
+   ============================================ */
+
+@layer components {
+  /* ========== BUTTONS ========== */
+  .btn-primary {
+    @apply bg-brand-green text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-brand-green/90 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-brand-orange text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-brand-orange/90 shadow-md hover:shadow-lg;
+  }
+  
+  /* ========== CARDS ========== */
+  .service-card {
+    @apply bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+}
+

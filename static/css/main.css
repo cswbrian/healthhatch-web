@@ -1,3 +1,25 @@
+/* ============================================
+   MAIN CSS ENTRY POINT
+   ============================================
+   This file imports all CSS modules in order.
+   Update individual modules in their respective files.
+   
+   Module Structure:
+   - _base.css: Tailwind directives
+   - _typography.css: Fonts and language-specific styles
+   - _components.css: Reusable UI components (buttons, cards)
+   - _markdown-content.css: Markdown styles for posts and pages
+   - _utilities.css: Custom utility classes
+   ============================================ */
+
+/* Base: Tailwind directives - MUST be first */
+
+/* ============================================
+   BASE STYLES
+   ============================================
+   Tailwind directives and base configuration
+   ============================================ */
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -106,9 +128,7 @@
   --tw-contain-style:  ;
 }
 
-/*
-! tailwindcss v3.4.18 | MIT License | https://tailwindcss.com
-*/
+/* ! tailwindcss v3.4.18 | MIT License | https://tailwindcss.com */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -588,6 +608,8 @@ video {
   }
 }
 
+/* ========== BUTTONS ========== */
+
 .btn-primary {
   border-radius: 0.5rem;
   --tw-bg-opacity: 1;
@@ -640,6 +662,8 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+/* ========== CARDS ========== */
+
 .service-card {
   border-radius: 0.5rem;
   border-width: 1px;
@@ -662,7 +686,9 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.post-content {
+/* Base markdown content container */
+
+.markdown-content {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
   font-size: 1.125rem;
@@ -673,7 +699,7 @@ video {
 
 /* ========== HEADINGS ========== */
 
-.post-content h1 {
+.markdown-content h1 {
   margin-top: 2.5rem;
   margin-bottom: 1.5rem;
   font-size: 2.25rem;
@@ -684,7 +710,7 @@ video {
   color: rgb(45 80 22 / var(--tw-text-opacity, 1));
 }
 
-.post-content h2 {
+.markdown-content h2 {
   margin-top: 2rem;
   margin-bottom: 1.25rem;
   font-size: 1.875rem;
@@ -699,7 +725,7 @@ video {
   padding-bottom: 0.5rem;
 }
 
-.post-content h3 {
+.markdown-content h3 {
   margin-top: 1.75rem;
   margin-bottom: 1rem;
   font-size: 1.5rem;
@@ -710,7 +736,7 @@ video {
   color: rgb(45 80 22 / var(--tw-text-opacity, 1));
 }
 
-.post-content h4 {
+.markdown-content h4 {
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
   font-size: 1.25rem;
@@ -721,7 +747,7 @@ video {
   color: rgb(45 80 22 / var(--tw-text-opacity, 1));
 }
 
-.post-content h5 {
+.markdown-content h5 {
   margin-top: 1.25rem;
   margin-bottom: 0.75rem;
   font-size: 1.125rem;
@@ -732,7 +758,7 @@ video {
   color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
-.post-content h6 {
+.markdown-content h6 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-size: 1rem;
@@ -747,7 +773,7 @@ video {
 
 /* ========== PARAGRAPHS ========== */
 
-.post-content p {
+.markdown-content p {
   margin-bottom: 1.5rem;
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
@@ -756,33 +782,33 @@ video {
 
 /* ========== LISTS ========== */
 
-.post-content ul,
-  .post-content ol {
+.markdown-content ul,
+  .markdown-content ol {
   margin-bottom: 1.5rem;
   margin-left: 1.5rem;
 }
 
-.post-content ul {
+.markdown-content ul {
   list-style-type: disc;
 }
 
-.post-content ol {
+.markdown-content ol {
   list-style-type: decimal;
 }
 
-.post-content li {
+.markdown-content li {
   margin-bottom: 0.75rem;
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
   line-height: 1.75;
 }
 
-.post-content ul li::marker {
+.markdown-content ul li::marker {
   --tw-text-opacity: 1;
   color: rgb(45 80 22 / var(--tw-text-opacity, 1));
 }
 
-.post-content ol li::marker {
+.markdown-content ol li::marker {
   font-weight: 600;
   --tw-text-opacity: 1;
   color: rgb(45 80 22 / var(--tw-text-opacity, 1));
@@ -790,23 +816,23 @@ video {
 
 /* Nested lists */
 
-.post-content ul ul,
-  .post-content ol ol,
-  .post-content ul ol,
-  .post-content ol ul {
+.markdown-content ul ul,
+  .markdown-content ol ol,
+  .markdown-content ul ol,
+  .markdown-content ol ul {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
   list-style-type: circle;
 }
 
-.post-content ul ul ul,
-  .post-content ol ol ol {
+.markdown-content ul ul ul,
+  .markdown-content ol ol ol {
   list-style-type: square;
 }
 
 /* ========== LINKS ========== */
 
-.post-content a {
+.markdown-content a {
   font-weight: 500;
   --tw-text-opacity: 1;
   color: rgb(45 80 22 / var(--tw-text-opacity, 1));
@@ -816,26 +842,26 @@ video {
   transition: all 0.2s ease;
 }
 
-.post-content a:hover {
+.markdown-content a:hover {
   color: rgb(45 80 22 / 0.8);
   text-decoration-thickness: 3px;
 }
 
 /* ========== TEXT EMPHASIS ========== */
 
-.post-content strong {
+.markdown-content strong {
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity, 1));
 }
 
-.post-content em {
+.markdown-content em {
   font-style: italic;
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
-.post-content code {
+.markdown-content code {
   border-radius: 0.25rem;
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
@@ -853,7 +879,7 @@ video {
 
 /* ========== CODE BLOCKS ========== */
 
-.post-content pre {
+.markdown-content pre {
   margin-bottom: 1.5rem;
   overflow-x: auto;
   border-radius: 0.5rem;
@@ -866,7 +892,7 @@ video {
   line-height: 1.6;
 }
 
-.post-content pre code {
+.markdown-content pre code {
   background-color: transparent;
   padding: 0px;
   --tw-text-opacity: 1;
@@ -876,7 +902,7 @@ video {
 
 /* ========== BLOCKQUOTES ========== */
 
-.post-content blockquote {
+.markdown-content blockquote {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   border-left-width: 4px;
@@ -895,17 +921,17 @@ video {
   background-color: rgb(232 245 230 / var(--tw-bg-opacity, 1));
 }
 
-.post-content blockquote p {
+.markdown-content blockquote p {
   margin-bottom: 0px;
 }
 
-.post-content blockquote p:last-child {
+.markdown-content blockquote p:last-child {
   margin-bottom: 0px;
 }
 
 /* ========== IMAGES ========== */
 
-.post-content img {
+.markdown-content img {
   margin-top: 2rem;
   margin-bottom: 2rem;
   width: 100%;
@@ -917,8 +943,8 @@ video {
   height: auto;
 }
 
-.post-content img + em,
-  .post-content img + p em {
+.markdown-content img + em,
+  .markdown-content img + p em {
   margin-top: 0.5rem;
   display: block;
   text-align: center;
@@ -931,7 +957,7 @@ video {
 
 /* ========== TABLES ========== */
 
-.post-content table {
+.markdown-content table {
   margin-bottom: 1.5rem;
   display: block;
   width: 100%;
@@ -939,14 +965,14 @@ video {
   overflow-x: auto;
 }
 
-.post-content table thead {
+.markdown-content table thead {
   --tw-bg-opacity: 1;
   background-color: rgb(45 80 22 / var(--tw-bg-opacity, 1));
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-.post-content table th {
+.markdown-content table th {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
@@ -960,7 +986,7 @@ video {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.post-content table td {
+.markdown-content table td {
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
@@ -972,25 +998,25 @@ video {
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
 }
 
-.post-content table tbody tr {
+.markdown-content table tbody tr {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
   transition: background-color 0.2s ease;
 }
 
-.post-content table tbody tr:nth-child(even) {
+.markdown-content table tbody tr:nth-child(even) {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
 }
 
-.post-content table tbody tr:hover {
+.markdown-content table tbody tr:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(232 245 230 / var(--tw-bg-opacity, 1));
 }
 
 /* ========== HORIZONTAL RULES ========== */
 
-.post-content hr {
+.markdown-content hr {
   margin-top: 2rem;
   margin-bottom: 2rem;
   border-width: 0px;
@@ -1001,21 +1027,21 @@ video {
 
 /* ========== FIRST/LAST CHILD ADJUSTMENTS ========== */
 
-.post-content > *:first-child {
+.markdown-content > *:first-child {
   margin-top: 0px;
 }
 
-.post-content > *:last-child {
+.markdown-content > *:last-child {
   margin-bottom: 0px;
 }
 
 /* ========== DEFINITION LISTS ========== */
 
-.post-content dl {
+.markdown-content dl {
   margin-bottom: 1.5rem;
 }
 
-.post-content dt {
+.markdown-content dt {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
@@ -1023,7 +1049,7 @@ video {
   color: rgb(45 80 22 / var(--tw-text-opacity, 1));
 }
 
-.post-content dd {
+.markdown-content dd {
   margin-left: 1.5rem;
   margin-bottom: 1rem;
   --tw-text-opacity: 1;
@@ -1032,7 +1058,7 @@ video {
 
 /* ========== ABBREVIATIONS ========== */
 
-.post-content abbr {
+.markdown-content abbr {
   cursor: help;
   text-decoration-line: underline;
   text-decoration-style: dotted;
@@ -1222,10 +1248,6 @@ video {
 
 .max-w-6xl {
   max-width: 72rem;
-}
-
-.max-w-none {
-  max-width: none;
 }
 
 .flex-shrink-0 {
@@ -1635,7 +1657,13 @@ video {
   transition-duration: 300ms;
 }
 
-/* Custom styles */
+/* Typography: Fonts and language-specific styles */
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================
+   Font families and language-specific typography
+   ============================================ */
 
 /* Apply Huninn font for Chinese language pages */
 
@@ -1644,11 +1672,29 @@ html[lang="zh-hk"] body {
   font-family: 'Huninn', 'Unbounded', system-ui, sans-serif;
 }
 
+/* Components: Reusable UI components */
+
 /* ============================================
-   POST CONTENT STYLES - Markdown Components
+   COMPONENTS
    ============================================
-   These styles define how markdown content is rendered in posts.
-   Easy to update and maintain - organized by component type.
+   Reusable UI components: buttons, cards, etc.
+   ============================================ */
+
+/* Markdown Content: Styles for markdown-rendered content (posts and pages) */
+
+/* ============================================
+   MARKDOWN CONTENT STYLES
+   ============================================
+   Markdown component styles for posts and pages
+   Organized by component type for easy updates
+   ============================================ */
+
+/* Utilities: Custom utility classes */
+
+/* ============================================
+   UTILITIES
+   ============================================
+   Custom utility classes
    ============================================ */
 
 .hover\:bg-brand-green:hover {

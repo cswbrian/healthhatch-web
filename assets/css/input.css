@@ -1,248 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Custom styles */
-@layer components {
-  .btn-primary {
-    @apply bg-brand-green text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-brand-green/90 shadow-md hover:shadow-lg;
-  }
-  
-  .btn-secondary {
-    @apply bg-brand-orange text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-brand-orange/90 shadow-md hover:shadow-lg;
-  }
-  
-  .service-card {
-    @apply bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-200;
-  }
-}
-
-@layer utilities {
-  .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-  }
-}
-
-/* Apply Huninn font for Chinese language pages */
-html[lang="zh-HK"] body,
-html[lang="zh-hk"] body {
-  font-family: 'Huninn', 'Unbounded', system-ui, sans-serif;
-}
-
 /* ============================================
-   POST CONTENT STYLES - Markdown Components
+   MAIN CSS ENTRY POINT
    ============================================
-   These styles define how markdown content is rendered in posts.
-   Easy to update and maintain - organized by component type.
+   This file imports all CSS modules in order.
+   Update individual modules in their respective files.
+   
+   Module Structure:
+   - _base.css: Tailwind directives
+   - _typography.css: Fonts and language-specific styles
+   - _components.css: Reusable UI components (buttons, cards)
+   - _markdown-content.css: Markdown styles for posts and pages
+   - _utilities.css: Custom utility classes
    ============================================ */
 
-@layer components {
-  .post-content {
-    @apply text-gray-700 leading-relaxed;
-    font-size: 1.125rem; /* 18px base */
-    line-height: 1.75; /* 28px line height */
-  }
+/* Base: Tailwind directives - MUST be first */
+@import '_base.css';
 
-  /* ========== HEADINGS ========== */
-  .post-content h1 {
-    @apply text-4xl font-bold text-brand-green mt-10 mb-6 leading-tight;
-  }
+/* Typography: Fonts and language-specific styles */
+@import '_typography.css';
 
-  .post-content h2 {
-    @apply text-3xl font-bold text-brand-green mt-8 mb-5 leading-tight;
-    @apply border-b-2 border-brand-green-light pb-2;
-  }
+/* Components: Reusable UI components */
+@import '_components.css';
 
-  .post-content h3 {
-    @apply text-2xl font-semibold text-brand-green mt-7 mb-4 leading-tight;
-  }
+/* Markdown Content: Styles for markdown-rendered content (posts and pages) */
+@import '_markdown-content.css';
 
-  .post-content h4 {
-    @apply text-xl font-semibold text-brand-green mt-6 mb-3 leading-tight;
-  }
-
-  .post-content h5 {
-    @apply text-lg font-semibold text-gray-800 mt-5 mb-3 leading-tight;
-  }
-
-  .post-content h6 {
-    @apply text-base font-semibold text-gray-700 mt-4 mb-2 leading-tight;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  /* ========== PARAGRAPHS ========== */
-  .post-content p {
-    @apply mb-6 text-gray-700;
-    line-height: 1.75;
-  }
-
-  /* ========== LISTS ========== */
-  .post-content ul,
-  .post-content ol {
-    @apply mb-6 ml-6;
-  }
-
-  .post-content ul {
-    list-style-type: disc;
-  }
-
-  .post-content ol {
-    list-style-type: decimal;
-  }
-
-  .post-content li {
-    @apply mb-3 text-gray-700;
-    line-height: 1.75;
-  }
-
-  .post-content ul li::marker {
-    @apply text-brand-green;
-  }
-
-  .post-content ol li::marker {
-    @apply text-brand-green font-semibold;
-  }
-
-  /* Nested lists */
-  .post-content ul ul,
-  .post-content ol ol,
-  .post-content ul ol,
-  .post-content ol ul {
-    @apply mt-3 mb-3;
-    list-style-type: circle;
-  }
-
-  .post-content ul ul ul,
-  .post-content ol ol ol {
-    list-style-type: square;
-  }
-
-  /* ========== LINKS ========== */
-  .post-content a {
-    @apply text-brand-green font-medium underline decoration-2 underline-offset-2;
-    transition: all 0.2s ease;
-  }
-
-  .post-content a:hover {
-    @apply text-brand-green/80;
-    text-decoration-thickness: 3px;
-  }
-
-  /* ========== TEXT EMPHASIS ========== */
-  .post-content strong {
-    @apply font-bold text-gray-900;
-  }
-
-  .post-content em {
-    @apply italic text-gray-800;
-  }
-
-  .post-content code {
-    @apply bg-gray-100 text-gray-800 px-2 py-1 rounded text-sm font-mono;
-    font-size: 0.9em;
-  }
-
-  /* ========== CODE BLOCKS ========== */
-  .post-content pre {
-    @apply bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto mb-6;
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-
-  .post-content pre code {
-    @apply bg-transparent text-gray-100 p-0;
-    font-size: inherit;
-  }
-
-  /* ========== BLOCKQUOTES ========== */
-  .post-content blockquote {
-    @apply border-l-4 border-brand-green pl-6 pr-4 py-2 my-6 italic text-gray-600;
-    @apply bg-brand-green-lighter rounded-r-lg;
-  }
-
-  .post-content blockquote p {
-    @apply mb-0;
-  }
-
-  .post-content blockquote p:last-child {
-    @apply mb-0;
-  }
-
-  /* ========== IMAGES ========== */
-  .post-content img {
-    @apply w-full rounded-lg shadow-md my-8;
-    max-width: 100%;
-    height: auto;
-  }
-
-  .post-content img + em,
-  .post-content img + p em {
-    @apply block text-center text-sm text-gray-500 mt-2 italic;
-  }
-
-  /* ========== TABLES ========== */
-  .post-content table {
-    @apply w-full border-collapse mb-6 overflow-x-auto block;
-  }
-
-  .post-content table thead {
-    @apply bg-brand-green text-white;
-  }
-
-  .post-content table th {
-    @apply px-4 py-3 text-left font-semibold text-sm uppercase tracking-wide;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .post-content table td {
-    @apply px-4 py-3 text-gray-700 border border-gray-200;
-  }
-
-  .post-content table tbody tr {
-    @apply bg-white;
-    transition: background-color 0.2s ease;
-  }
-
-  .post-content table tbody tr:nth-child(even) {
-    @apply bg-gray-50;
-  }
-
-  .post-content table tbody tr:hover {
-    @apply bg-brand-green-lighter;
-  }
-
-  /* ========== HORIZONTAL RULES ========== */
-  .post-content hr {
-    @apply border-0 border-t-2 border-gray-200 my-8;
-  }
-
-  /* ========== FIRST/LAST CHILD ADJUSTMENTS ========== */
-  .post-content > *:first-child {
-    @apply mt-0;
-  }
-
-  .post-content > *:last-child {
-    @apply mb-0;
-  }
-
-  /* ========== DEFINITION LISTS ========== */
-  .post-content dl {
-    @apply mb-6;
-  }
-
-  .post-content dt {
-    @apply font-semibold text-brand-green mt-4 mb-2;
-  }
-
-  .post-content dd {
-    @apply ml-6 mb-4 text-gray-700;
-  }
-
-  /* ========== ABBREVIATIONS ========== */
-  .post-content abbr {
-    @apply underline decoration-dotted cursor-help;
-    text-underline-offset: 2px;
-  }
-}
+/* Utilities: Custom utility classes */
+@import '_utilities.css';
 

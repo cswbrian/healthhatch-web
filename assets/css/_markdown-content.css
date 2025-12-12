@@ -1,0 +1,218 @@
+/* ============================================
+   MARKDOWN CONTENT STYLES
+   ============================================
+   Markdown component styles for posts and pages
+   Organized by component type for easy updates
+   ============================================ */
+
+@layer components {
+  /* Base markdown content container */
+  .markdown-content {
+    @apply text-gray-700 leading-relaxed;
+    font-size: 1.125rem; /* 18px base */
+    line-height: 1.75; /* 28px line height */
+  }
+
+  /* ========== HEADINGS ========== */
+  .markdown-content h1 {
+    @apply text-4xl font-bold text-brand-green mt-10 mb-6 leading-tight;
+  }
+
+  .markdown-content h2 {
+    @apply text-3xl font-bold text-brand-green mt-8 mb-5 leading-tight;
+    @apply border-b-2 border-brand-green-light pb-2;
+  }
+
+  .markdown-content h3 {
+    @apply text-2xl font-semibold text-brand-green mt-7 mb-4 leading-tight;
+  }
+
+  .markdown-content h4 {
+    @apply text-xl font-semibold text-brand-green mt-6 mb-3 leading-tight;
+  }
+
+  .markdown-content h5 {
+    @apply text-lg font-semibold text-gray-800 mt-5 mb-3 leading-tight;
+  }
+
+  .markdown-content h6 {
+    @apply text-base font-semibold text-gray-700 mt-4 mb-2 leading-tight;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ========== PARAGRAPHS ========== */
+  .markdown-content p {
+    @apply mb-6 text-gray-700;
+    line-height: 1.75;
+  }
+
+  /* ========== LISTS ========== */
+  .markdown-content ul,
+  .markdown-content ol {
+    @apply mb-6 ml-6;
+  }
+
+  .markdown-content ul {
+    list-style-type: disc;
+  }
+
+  .markdown-content ol {
+    list-style-type: decimal;
+  }
+
+  .markdown-content li {
+    @apply mb-3 text-gray-700;
+    line-height: 1.75;
+  }
+
+  .markdown-content ul li::marker {
+    @apply text-brand-green;
+  }
+
+  .markdown-content ol li::marker {
+    @apply text-brand-green font-semibold;
+  }
+
+  /* Nested lists */
+  .markdown-content ul ul,
+  .markdown-content ol ol,
+  .markdown-content ul ol,
+  .markdown-content ol ul {
+    @apply mt-3 mb-3;
+    list-style-type: circle;
+  }
+
+  .markdown-content ul ul ul,
+  .markdown-content ol ol ol {
+    list-style-type: square;
+  }
+
+  /* ========== LINKS ========== */
+  .markdown-content a {
+    @apply text-brand-green font-medium underline decoration-2 underline-offset-2;
+    transition: all 0.2s ease;
+  }
+
+  .markdown-content a:hover {
+    @apply text-brand-green/80;
+    text-decoration-thickness: 3px;
+  }
+
+  /* ========== TEXT EMPHASIS ========== */
+  .markdown-content strong {
+    @apply font-bold text-gray-900;
+  }
+
+  .markdown-content em {
+    @apply italic text-gray-800;
+  }
+
+  .markdown-content code {
+    @apply bg-gray-100 text-gray-800 px-2 py-1 rounded text-sm font-mono;
+    font-size: 0.9em;
+  }
+
+  /* ========== CODE BLOCKS ========== */
+  .markdown-content pre {
+    @apply bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto mb-6;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .markdown-content pre code {
+    @apply bg-transparent text-gray-100 p-0;
+    font-size: inherit;
+  }
+
+  /* ========== BLOCKQUOTES ========== */
+  .markdown-content blockquote {
+    @apply border-l-4 border-brand-green pl-6 pr-4 py-2 my-6 italic text-gray-600;
+    @apply bg-brand-green-lighter rounded-r-lg;
+  }
+
+  .markdown-content blockquote p {
+    @apply mb-0;
+  }
+
+  .markdown-content blockquote p:last-child {
+    @apply mb-0;
+  }
+
+  /* ========== IMAGES ========== */
+  .markdown-content img {
+    @apply w-full rounded-lg shadow-md my-8;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .markdown-content img + em,
+  .markdown-content img + p em {
+    @apply block text-center text-sm text-gray-500 mt-2 italic;
+  }
+
+  /* ========== TABLES ========== */
+  .markdown-content table {
+    @apply w-full border-collapse mb-6 overflow-x-auto block;
+  }
+
+  .markdown-content table thead {
+    @apply bg-brand-green text-white;
+  }
+
+  .markdown-content table th {
+    @apply px-4 py-3 text-left font-semibold text-sm uppercase tracking-wide;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .markdown-content table td {
+    @apply px-4 py-3 text-gray-700 border border-gray-200;
+  }
+
+  .markdown-content table tbody tr {
+    @apply bg-white;
+    transition: background-color 0.2s ease;
+  }
+
+  .markdown-content table tbody tr:nth-child(even) {
+    @apply bg-gray-50;
+  }
+
+  .markdown-content table tbody tr:hover {
+    @apply bg-brand-green-lighter;
+  }
+
+  /* ========== HORIZONTAL RULES ========== */
+  .markdown-content hr {
+    @apply border-0 border-t-2 border-gray-200 my-8;
+  }
+
+  /* ========== FIRST/LAST CHILD ADJUSTMENTS ========== */
+  .markdown-content > *:first-child {
+    @apply mt-0;
+  }
+
+  .markdown-content > *:last-child {
+    @apply mb-0;
+  }
+
+  /* ========== DEFINITION LISTS ========== */
+  .markdown-content dl {
+    @apply mb-6;
+  }
+
+  .markdown-content dt {
+    @apply font-semibold text-brand-green mt-4 mb-2;
+  }
+
+  .markdown-content dd {
+    @apply ml-6 mb-4 text-gray-700;
+  }
+
+  /* ========== ABBREVIATIONS ========== */
+  .markdown-content abbr {
+    @apply underline decoration-dotted cursor-help;
+    text-underline-offset: 2px;
+  }
+}
+

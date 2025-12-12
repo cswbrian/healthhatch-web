@@ -1,0 +1,12 @@
+/* ============================================
+   TYPOGRAPHY
+   ============================================
+   Font families and language-specific typography
+   ============================================ */
+
+/* Apply Huninn font for Chinese language pages */
+html[lang="zh-HK"] body,
+html[lang="zh-hk"] body {
+  font-family: 'Huninn', 'Unbounded', system-ui, sans-serif;
+}
+
