@@ -6,11 +6,11 @@
         opacity: 0.8;
       }
       33% {
-        transform: translate(20%, -15%) scale(1.1);
+        transform: translate(20%, -15%) scale(1.4);
         opacity: 0.9;
       }
       66% {
-        transform: translate(-10%, 20%) scale(0.9);
+        transform: translate(-10%, 20%) scale(0.7);
         opacity: 0.7;
       }
     }
@@ -21,11 +21,11 @@
         opacity: 0.75;
       }
       33% {
-        transform: translate(-15%, 25%) scale(1.2);
+        transform: translate(-10%, 15%) scale(1.5);
         opacity: 0.85;
       }
       66% {
-        transform: translate(25%, -10%) scale(0.8);
+        transform: translate(10%, -10%) scale(0.6);
         opacity: 0.65;
       }
     }
@@ -36,19 +36,18 @@
         opacity: 0.85;
       }
       33% {
-        transform: translate(15%, 20%) scale(1.15);
+        transform: translate(15%, 20%) scale(1.3);
         opacity: 0.95;
       }
       66% {
-        transform: translate(-20%, -15%) scale(0.85);
+        transform: translate(-20%, -15%) scale(0.65);
         opacity: 0.75;
       }
     }
     
     .animated-gradient-blob {
       position: absolute;
-      border-radius: 50%;
-      filter: blur(70px);
+      filter: blur(60px);
       mix-blend-mode: normal;
       pointer-events: none;
       will-change: transform, opacity;
@@ -60,7 +59,8 @@
       background: radial-gradient(circle, rgba(45, 80, 22, 0.75) 0%, rgba(168, 213, 163, 0.6) 50%, transparent 70%);
       top: -300px;
       right: -100px;
-      animation: gradient-flow-1 20s ease-in-out infinite;
+      animation: gradient-flow-1 12s ease-in-out infinite;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     }
     
     .gradient-blob-2 {
@@ -69,16 +69,18 @@
       background: radial-gradient(circle, rgba(249, 115, 22, 0.8) 0%, rgba(251, 146, 60, 0.65) 50%, transparent 70%);
       bottom: -250px;
       right: -50px;
-      animation: gradient-flow-2 25s ease-in-out infinite;
+      animation: gradient-flow-2 15s ease-in-out infinite;
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     }
     
     .gradient-blob-3 {
-      width: 800px;
-      height: 800px;
+      width: 500px;
+      height: 500px;
       background: radial-gradient(circle, rgba(250, 204, 21, 0.9) 0%, rgba(253, 230, 138, 0.75) 50%, transparent 70%);
       top: 5%;
       right: 50px;
-      animation: gradient-flow-3 22s ease-in-out infinite;
+      animation: gradient-flow-3 13s ease-in-out infinite;
+      border-radius: 40% 60% 50% 50% / 50% 40% 60% 50%;
     }
     
     /* Mobile styles for gradient blobs */
