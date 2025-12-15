@@ -3,12 +3,10 @@ module.exports = {
   content: [
     './layouts/**/*.html',
     './content/**/*.md',
+    './static/**/*.html',
+    './public/**/*.html',
   ],
   safelist: [
-    // Text size utilities that might be used dynamically
-    'text-5xl',
-    'text-7xl',
-    'text-8xl',
     // Pattern to match all brand color variations (covers text-, bg-, border-, hover: variants)
     {
       pattern: /(text|bg|border|hover:text|hover:bg)-brand-(green|orange|yellow)(-(light|lighter))?/,
