@@ -5,16 +5,11 @@ module.exports = {
     './content/**/*.md',
   ],
   safelist: [
-    'text-brand-green',
-    'text-brand-orange',
-    'bg-brand-green',
-    'bg-brand-orange',
-    'bg-brand-green-light',
-    'bg-brand-green-lighter',
-    'bg-brand-orange-light',
-    'bg-brand-yellow-light',
-    'hover:text-brand-green',
-    'hover:bg-brand-green',
+    // Text size utilities that might be used dynamically
+    'text-5xl',
+    'text-7xl',
+    'text-8xl',
+    // Pattern to match all brand color variations (covers text-, bg-, border-, hover: variants)
     {
       pattern: /(text|bg|border|hover:text|hover:bg)-brand-(green|orange|yellow)(-(light|lighter))?/,
     },
