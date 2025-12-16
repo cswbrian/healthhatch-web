@@ -1,25 +1,10 @@
 <header class="absolute top-0 left-0 w-screen h-[72px] z-50 bg-transparent" id="site-header">
-  <nav class="container mx-auto px-4 py-4" role="navigation">
+  <nav class="md:container mx-auto px-4 py-4" role="navigation">
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <a href="{{ .Site.Home.RelPermalink }}" class="flex items-center space-x-2 no-underline">
         {{ $logo := resources.Get "css/HH_main_bi_color.png" }}
-        {{ if $logo }}
-          <img src="{{ $logo.RelPermalink }}" alt="HealthHatch Logo" class="h-10 w-auto">
-        {{ else }}
-          <div class="flex items-center space-x-1">
-            <div class="w-10 h-10 bg-brand-green rounded flex items-center justify-center">
-              <span class="text-white font-bold text-xl">H</span>
-            </div>
-            <div class="w-6 h-6 bg-brand-green rounded flex items-center justify-center">
-              <span class="text-white font-bold text-xs">H</span>
-            </div>
-          </div>
-          <div class="flex flex-col">
-            <span class="text-brand-green font-bold text-lg leading-tight">健康籽</span>
-            <span class="text-gray-500 text-xs leading-tight">HEALTH HATCH</span>
-          </div>
-        {{ end }}
+        <img src="{{ $logo.RelPermalink }}" alt="HealthHatch Logo" class="h-8 md:h-10 w-auto">
       </a>
       
       <!-- Navigation Menu -->
@@ -79,84 +64,200 @@
       </div>
       
       <!-- Mobile Menu Button -->
-      <button class="md:hidden text-gray-700" id="mobile-menu-button" aria-label="Toggle menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button class="md:hidden text-gray-700 z-50 relative" id="mobile-menu-button" aria-label="Toggle menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
     
-    <!-- Mobile Menu -->
-    <div class="hidden md:hidden mt-4 pb-4" id="mobile-menu">
-      {{ if .Site.Menus.main }}
-        <ul class="flex flex-col space-y-3 list-none m-0 p-0">
-          {{ range .Site.Menus.main }}
-          <li>
-            <a class="text-gray-700 hover:text-brand-green no-underline font-medium block py-2 {{ if eq .Identifier "updates" }}text-brand-orange{{ end }}" 
-               href="{{ .URL }}" 
-               title="{{ .Name }}">
-              {{ .Name }}
-            </a>
-          </li>
-          {{ end }}
-        </ul>
-      {{ end }}
-      
-      <!-- Mobile Language Switcher -->
-      <div class="mt-4 pt-4 border-t border-gray-200">
-        {{ $currentLang := .Site.Language.Lang }}
-        {{ $targetLang := "" }}
-        {{ $targetURL := "" }}
-        {{ if eq $currentLang "en" }}
-          {{ $targetLang = "zh-hk" }}
-        {{ else }}
-          {{ $targetLang = "en" }}
-        {{ end }}
-        {{ if $.IsPage }}
-          {{ $translation := index (where $.Translations "Language.Lang" $targetLang) 0 }}
-          {{ if $translation }}
-            {{ $targetURL = $translation.RelPermalink }}
-          {{ else }}
-            {{ $defaultLang := index $.Site.Languages 0 }}
-            {{ if eq $targetLang $defaultLang.Lang }}
-              {{ $targetURL = "/" }}
+    <!-- Mobile Menu Overlay -->
+    <div class="hidden md:hidden fixed inset-0 bg-lime-100 z-40 overflow-y-auto" id="mobile-menu">
+      <div class="min-h-screen flex flex-col relative" id="mobile-menu-content">
+        <!-- Header with Logo and Close Button -->
+        <div class="flex items-center justify-between px-4 py-4">
+          <!-- Logo -->
+          <a href="{{ .Site.Home.RelPermalink }}" class="flex items-center space-x-2 no-underline z-50" onclick="if (typeof closeMobileMenu === 'function') closeMobileMenu();">
+            {{ $logo := resources.Get "css/HH_main_bi_color.png" }}
+            {{ if $logo }}
+              <img src="{{ $logo.RelPermalink }}" alt="HealthHatch Logo" class="h-8 w-auto">
             {{ else }}
-              {{ $targetURL = printf "/%s/" $targetLang }}
+              <div class="flex items-center space-x-1">
+                <div class="w-10 h-10 bg-brand-green rounded flex items-center justify-center">
+                  <span class="text-white font-bold text-xl">H</span>
+                </div>
+                <div class="w-6 h-6 bg-brand-green rounded flex items-center justify-center">
+                  <span class="text-white font-bold text-xs">H</span>
+                </div>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-brand-green font-bold text-lg leading-tight">健康籽</span>
+                <span class="text-gray-500 text-xs leading-tight">HEALTH HATCH</span>
+              </div>
             {{ end }}
-          {{ end }}
-        {{ else }}
-          {{ $defaultLang := index $.Site.Languages 0 }}
-          {{ if eq $targetLang $defaultLang.Lang }}
-            {{ $targetURL = "/" }}
-          {{ else }}
-            {{ $targetURL = printf "/%s/" $targetLang }}
-          {{ end }}
-        {{ end }}
-        <a 
-          href="{{ $targetURL }}"
-          class="text-gray-700 hover:text-brand-green no-underline font-bold block py-2"
-          aria-label="Switch language"
-        >
-          {{ if eq $currentLang "en" }}中{{ else }}EN{{ end }}
-        </a>
+          </a>
+          
+          <!-- Close Button -->
+          <button class="text-black z-50" id="mobile-menu-close" aria-label="Close menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Navigation Items -->
+        <div class="flex-1 flex flex-col justify-between pr-4 pb-20">
+          <!-- Navigation Links (centered) -->
+          <div class="flex-1 flex flex-col justify-center">
+            {{ if .Site.Menus.main }}
+              {{ $currentLang := .Site.Language.Lang }}
+              {{ $translations := dict }}
+              {{ if eq $currentLang "en" }}
+                {{ $translations = dict "home" "首頁" "about" "關於我們" "updates" "最新消息" }}
+              {{ else }}
+                {{ $translations = dict "home" "Home" "about" "About" "updates" "Updates" }}
+              {{ end }}
+              
+              <ul class="flex flex-col items-end space-y-6 list-none m-0 p-0">
+                {{ range .Site.Menus.main }}
+                  {{ $translationName := index $translations .Identifier }}
+                  {{ if not $translationName }}
+                    {{ $translationName = .Name }}
+                  {{ end }}
+                  
+                  <li class="text-right">
+                    <a class="no-underline block group" 
+                       href="{{ .URL }}" 
+                       title="{{ .Name }}"
+                       onclick="if (typeof closeMobileMenu === 'function') closeMobileMenu();">
+                      <div class="text-gray-800 text-3xl md:text-4xl leading-tight mb-1 {{ if eq .Identifier "updates" }}text-brand-orange{{ end }}">
+                        {{ .Name }}
+                      </div>
+                    </a>
+                  </li>
+                {{ end }}
+              </ul>
+            {{ end }}
+          </div>
+          
+          <!-- Mobile Language Switcher (at bottom) -->
+          <div class="mt-8 pt-6">
+            {{ $currentLang := .Site.Language.Lang }}
+            {{ $targetLang := "" }}
+            {{ $targetURL := "" }}
+            {{ if eq $currentLang "en" }}
+              {{ $targetLang = "zh-hk" }}
+            {{ else }}
+              {{ $targetLang = "en" }}
+            {{ end }}
+            {{ if $.IsPage }}
+              {{ $translation := index (where $.Translations "Language.Lang" $targetLang) 0 }}
+              {{ if $translation }}
+                {{ $targetURL = $translation.RelPermalink }}
+              {{ else }}
+                {{ $defaultLang := index $.Site.Languages 0 }}
+                {{ if eq $targetLang $defaultLang.Lang }}
+                  {{ $targetURL = "/" }}
+                {{ else }}
+                  {{ $targetURL = printf "/%s/" $targetLang }}
+                {{ end }}
+              {{ end }}
+            {{ else }}
+              {{ $defaultLang := index $.Site.Languages 0 }}
+              {{ if eq $targetLang $defaultLang.Lang }}
+                {{ $targetURL = "/" }}
+              {{ else }}
+                {{ $targetURL = printf "/%s/" $targetLang }}
+              {{ end }}
+            {{ end }}
+            <a 
+              href="{{ $targetURL }}"
+              class="text-gray-800 text-2xl md:text-3xl no-underline block text-right hover:opacity-80 transition-opacity"
+              aria-label="Switch language"
+              onclick="if (typeof closeMobileMenu === 'function') closeMobileMenu();"
+            >
+              {{ if eq $currentLang "en" }}中{{ else }}EN{{ end }}
+            </a>
+          </div>
+        </div>
+        
+        <!-- Decorative Element (Optional) -->
+        <div class="absolute bottom-0 left-0 w-32 h-32">
+          <div class="w-full h-full bg-brand-orange rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+        </div>
       </div>
     </div>
   </nav>
 </header>
 
 <script>
-  // Simple mobile menu toggle
+  // Mobile menu toggle with overlay
+  // Make closeMenu globally accessible for inline onclick handlers
+  window.closeMobileMenu = function() {
+    const menu = document.getElementById('mobile-menu');
+    const button = document.getElementById('mobile-menu-button');
+    if (menu) {
+      menu.classList.add('hidden');
+    }
+    if (button) {
+      button.classList.remove('hidden'); // Show hamburger button
+    }
+    document.body.style.overflow = ''; // Restore body scroll
+  };
+  
   document.addEventListener('DOMContentLoaded', function() {
     const button = document.getElementById('mobile-menu-button');
+    const closeButton = document.getElementById('mobile-menu-close');
     const menu = document.getElementById('mobile-menu');
     const header = document.getElementById('site-header');
     
-    // Mobile menu toggle
+    function openMenu() {
+      if (menu) {
+        menu.classList.remove('hidden');
+        if (button) {
+          button.classList.add('hidden'); // Hide hamburger button
+        }
+        document.body.style.overflow = 'hidden'; // Prevent body scroll when menu is open
+      }
+    }
+    
+    function closeMenu() {
+      if (menu) {
+        menu.classList.add('hidden');
+        if (button) {
+          button.classList.remove('hidden'); // Show hamburger button
+        }
+        document.body.style.overflow = ''; // Restore body scroll
+      }
+    }
+    
+    // Open menu
     if (button && menu) {
-      button.addEventListener('click', function() {
-        menu.classList.toggle('hidden');
+      button.addEventListener('click', openMenu);
+    }
+    
+    // Close menu
+    if (closeButton && menu) {
+      closeButton.addEventListener('click', closeMenu);
+    }
+    
+    // Close menu when clicking on the overlay background (not on content)
+    if (menu) {
+      const menuContent = document.getElementById('mobile-menu-content');
+      menu.addEventListener('click', function(e) {
+        // Only close if clicking directly on the overlay, not on the content
+        if (e.target === menu) {
+          closeMenu();
+        }
       });
     }
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && menu && !menu.classList.contains('hidden')) {
+        closeMenu();
+      }
+    });
   });
 </script>
 

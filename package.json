@@ -1,12 +1,8 @@
 {
-  "name": "healthhatch-blog",
+  "name": "healthhatch",
   "version": "1.0.0",
   "description": "HealthHatch bilingual blog with Hugo and Decap CMS",
-  "scripts": {
-    "build:css": "tailwindcss -i ./assets/css/input.css -o ./static/css/main.css --minify",
-    "watch:css": "tailwindcss -i ./assets/css/input.css -o ./static/css/main.css --watch"
-  },
-  "comment": "Note: CSS is now processed via Hugo Pipes. These scripts are optional for standalone CSS builds.",
+  "scripts": {},
   "devDependencies": {
     "tailwindcss": "^3.4.0",
     "postcss": "^8.4.35",

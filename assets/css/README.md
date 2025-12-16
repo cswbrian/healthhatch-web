@@ -51,12 +51,7 @@ Custom utility classes that extend Tailwind's utility system.
 
 ## Build Process
 
-CSS is automatically processed by Hugo Pipes when running `hugo server` or `hugo`. The modules are imported and compiled into a single CSS file.
-
-For standalone CSS builds:
-```bash
-npm run build:css
-```
+CSS is automatically processed by Hugo Pipes when running `hugo server` or `hugo`. The modules are imported and compiled into a single CSS file. No separate build step is required.
 
 ## Adding New Modules
 

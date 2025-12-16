@@ -216,9 +216,7 @@ The project uses Tailwind CSS integrated with Hugo Pipes for automatic CSS proce
 1. Edit `assets/css/input.css` to add custom styles or component classes
 2. Edit `tailwind.config.js` to customize theme colors, fonts, etc.
 3. Run `hugo server` - CSS is automatically processed during Hugo build
-4. No separate CSS build step needed!
-
-**Note**: The `npm run build:css` script is still available for standalone CSS builds if needed, but Hugo Pipes handles CSS processing automatically.
+4. No separate CSS build step needed! Hugo Pipes handles all CSS processing automatically.
 
 ### Language Configuration
 

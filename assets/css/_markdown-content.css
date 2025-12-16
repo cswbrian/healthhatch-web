@@ -21,11 +21,11 @@
 
   /* ========== HEADINGS ========== */
   .markdown-content h1 {
-    @apply text-3xl md:text-4xl font-bold text-brand-green mt-6 md:mt-10 mb-4 md:mb-6 leading-tight;
+    @apply text-3xl md:text-4xl text-brand-green mt-6 md:mt-10 mb-4 md:mb-6 leading-tight;
   }
 
   .markdown-content h2 {
-    @apply text-2xl md:text-3xl font-bold text-brand-green mt-6 md:mt-8 mb-4 md:mb-5 leading-tight;
+    @apply text-2xl md:text-3xl text-brand-green mt-6 md:mt-8 mb-4 md:mb-5 leading-tight;
     @apply border-b-2 border-brand-green-light pb-2;
   }
 
