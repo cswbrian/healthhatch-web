@@ -1,34 +1,31 @@
 ---
-title: "SEO Configuration Example"
-date: 2024-01-15T10:00:00+08:00
-draft: true
-description: "This is an example post demonstrating comprehensive SEO configuration with all available front matter fields."
-featured_image: "/images/uploads/example.jpg"
-image_alt: "Example image showing SEO best practices"
-author: "HealthHatch Team"
-tags: ["seo", "example", "guide"]
-categories: ["general"]
-keywords: ["SEO", "search engine optimization", "metadata", "social media"]
-
-# Advanced SEO fields
-# Twitter fields (optional - only if you have Twitter)
-# twitter_card: "summary_large_image"
-# twitter_image: "/images/twitter-specific.jpg"
-# twitter_creator: "@healthhatch"
-schema_type: "Article"
-articleSection: "SEO Guide"
-
-# Image dimensions (for Open Graph)
+draft: false
 image_width: 1200
+private: false
+image_alt: Example image showing SEO best practices
+featured_image: /images/uploads/example.jpg
+keywords:
+  - SEO
+  - search engine optimization
+  - metadata
+  - social media
 image_height: 630
-
-# SEO control
-canonicalUrl: ""  # Leave empty to use auto-generated, or set custom URL
-private: false  # Set to true to prevent indexing
-
-# Dates
-publishDate: 2024-01-15T10:00:00+08:00
+author: HealthHatch Team
 lastmod: 2024-01-20T15:30:00+08:00
+date: 2024-01-15T10:00:00+08:00
+articleSection: SEO Guide
+title: SEO Configuration Example
+schema_type: Article
+tags:
+  - seo
+  - example
+  - guide
+canonicalUrl: ""
+description: This is an example post demonstrating comprehensive SEO
+  configuration with all available front matter fields.
+categories:
+  - general
+publishDate: 2024-01-15T10:00:00+08:00
 ---
 
 This is an example post showing how to configure SEO metadata for a page.
