@@ -1,0 +1,44 @@
+{{- /* Twitter Card */ -}}
+{{- $title := .Title | default .Site.Title -}}
+{{- $description := .Description | default .Summary | default .Site.Params.description | truncate 200 -}}
+{{- $image := "" -}}
+{{- $imageAlt := $title -}}
+
+{{- /* Get featured image with priority: page param > page image > site param > default */ -}}
+{{- if .Params.featured_image -}}
+  {{- $image = .Params.featured_image | absURL -}}
+{{- else if .Params.image -}}
+  {{- $image = .Params.image | absURL -}}
+{{- else if .Params.twitter_image -}}
+  {{- $image = .Params.twitter_image | absURL -}}
+{{- else if .Site.Params.featured_image -}}
+  {{- $image = .Site.Params.featured_image | absURL -}}
+{{- else if .Site.Params.twitter_image -}}
+  {{- $image = .Site.Params.twitter_image | absURL -}}
+{{- end -}}
+
+{{- if .Params.image_alt -}}
+  {{- $imageAlt = .Params.image_alt -}}
+{{- end -}}
+
+{{- $cardType := .Params.twitter_card | default .Site.Params.twitter_card | default "summary_large_image" -}}
+{{- $siteHandle := .Site.Params.twitter_site | default "" -}}
+{{- $creatorHandle := .Params.twitter_creator | default .Site.Params.twitter_creator | default "" -}}
+
+<meta name="twitter:card" content="{{ $cardType }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+
+{{- if $image -}}
+<meta name="twitter:image" content="{{ $image }}">
+<meta name="twitter:image:alt" content="{{ $imageAlt }}">
+{{- end -}}
+
+{{- if $siteHandle -}}
+<meta name="twitter:site" content="{{ $siteHandle }}">
+{{- end -}}
+
+{{- if $creatorHandle -}}
+<meta name="twitter:creator" content="{{ $creatorHandle }}">
+{{- end -}}
+

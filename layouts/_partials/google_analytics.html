@@ -1,0 +1,37 @@
+{{- /* Google Analytics - supports both GA4 and Universal Analytics */ -}}
+{{- if .Site.Params.googleAnalytics -}}
+  {{- $gaId := .Site.Params.googleAnalytics -}}
+  {{- if hasPrefix $gaId "G-" -}}
+    {{- /* Google Analytics 4 (GA4) */ -}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $gaId }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ $gaId }}', {
+        'page_path': '{{ .RelPermalink }}',
+        'page_title': '{{ .Title | default .Site.Title }}'
+      });
+    </script>
+  {{- else -}}
+    {{- /* Universal Analytics (legacy) */ -}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $gaId }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ $gaId }}');
+    </script>
+  {{- end -}}
+{{- end -}}
+
+{{- /* Google Tag Manager */ -}}
+{{- if .Site.Params.googleTagManager -}}
+  {{- $gtmId := .Site.Params.googleTagManager -}}
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','{{ $gtmId }}');</script>
+{{- end -}}
+

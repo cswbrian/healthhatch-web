@@ -63,10 +63,45 @@ defaultContentLanguageInSubdir = false
   weight = 3
 
 [params]
+  # Site Information
   featured_image = '/images/default-featured.jpg'
   author = 'HealthHatch Team'
   description = 'HealthHatch - Health Information and Latest News'
   show_recent_updates = true
+  
+  # SEO Settings
+  # Open Graph default image (if different from featured_image)
+  og_image = ''
+  
+  # Organization/Company Schema
+  logo = ''  # Path to organization logo (e.g., '/images/logo.png')
+  
+  # Social Media Links
+  # These links are used in the footer and Schema.org Organization data
+  facebook_url = 'https://www.facebook.com/profile.php?id=61573932003434'
+  instagram_url = 'https://www.instagram.com/healthhatch_hk'
+  linkedin_url = 'https://www.linkedin.com/in/%E5%81%A5%E5%BA%B7%E7%B1%BD-health-hatch-220552390/'
+  
+  # Social Media Links (for Schema.org Organization - array format)
+  social = [
+    { platform = 'facebook', url = 'https://www.facebook.com/profile.php?id=61573932003434' },
+    { platform = 'instagram', url = 'https://www.instagram.com/healthhatch_hk' },
+    { platform = 'linkedin', url = 'https://www.linkedin.com/in/%E5%81%A5%E5%BA%B7%E7%B1%BD-health-hatch-220552390/' }
+  ]
+  
+  # Search functionality (optional)
+  # search_url = '/search/?q={search_term_string}'
+  
+  # Analytics (optional)
+  # googleAnalytics = 'G-XXXXXXXXXX'  # Google Analytics 4 Measurement ID
+  # googleTagManager = 'GTM-XXXXXXX'  # Google Tag Manager Container ID
+  
+  # Language-specific SEO descriptions
+  [params.languages]
+    [params.languages.en]
+      description = 'HealthHatch - Connecting Health From Individual to Community. Professional health assessment, evidence-based solutions, and data-driven tracking.'
+    [params.languages."zh-HK"]
+      description = '健康籽 - 連結健康，由個人到社區。專業健康評估、醫學實證方案及數據化追蹤服務。'
 
 [module]
   [[module.mounts]]

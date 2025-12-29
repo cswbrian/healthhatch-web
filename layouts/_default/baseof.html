@@ -3,9 +3,38 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }}{{ if ne $.Site.Title . }} | {{ $.Site.Title }}{{ end }}{{ else }}{{ .Site.Title }}{{ end }}{{ end }}</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+    
+    {{- /* Keywords meta tag */ -}}
+    {{- if .Params.keywords -}}
+      <meta name="keywords" content="{{ if reflect.IsSlice .Params.keywords }}{{ delimit .Params.keywords ", " }}{{ else }}{{ .Params.keywords }}{{ end }}">
+    {{- else if .Params.tags -}}
+      <meta name="keywords" content="{{ delimit .Params.tags ", " }}">
+    {{- end -}}
+    
+    {{- /* Language alternates (hreflang) for multilingual sites */ -}}
+    {{- if hugo.IsMultilingual -}}
+      {{- range .Site.Languages -}}
+        {{- $translation := false -}}
+        {{- $langCode := .Lang -}}
+        {{- if $.Translations -}}
+          {{- range $.Translations -}}
+            {{- if eq .Lang $langCode -}}
+              {{- $translation = . -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+        {{- if $translation -}}
+          <link rel="alternate" hreflang="{{ $langCode }}" href="{{ $translation.Permalink }}">
+        {{- else if eq $.Site.Language.Lang $langCode -}}
+          <link rel="alternate" hreflang="{{ $langCode }}" href="{{ $.Permalink }}">
+        {{- end -}}
+      {{- end -}}
+      <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+    {{- end -}}
+    
     {{ hugo.Generator }}
     {{ $production := hugo.IsProduction }}
     {{ $public := not .Params.private }}
@@ -56,6 +85,10 @@
 
   {{- $environment := hugo.Environment | compare.Default "production" -}}
   <body class="antialiased {{ $environment }}">
+    {{- /* Google Tag Manager (noscript) */ -}}
+    {{- if .Site.Params.googleTagManager -}}
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ .Site.Params.googleTagManager }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {{- end -}}
 
     {{ block "header" . }}{{ partials.Include "site-header.html" .}}{{ end }}
     <main role="main">
