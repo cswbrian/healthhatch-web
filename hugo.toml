@@ -15,7 +15,7 @@ defaultContentLanguageInSubdir = false
   [languages.zh-HK]
     languageName = '繁體中文'
     weight = 2
-    title = 'HealthHatch'
+    title = '健康籽 HealthHatch'
     contentDir = 'content/zh-hk'
 
 [menu]
