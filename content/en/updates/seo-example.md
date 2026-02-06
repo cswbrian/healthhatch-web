@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 image_width: 1200
 private: false
 image_alt: Example image showing SEO best practices
