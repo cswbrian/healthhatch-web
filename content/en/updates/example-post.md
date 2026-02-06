@@ -1,12 +1,15 @@
 ---
-title: "Example Post"
+title: Example Post
 date: 2024-01-15T10:00:00+08:00
-draft: false
-description: "This is an example post showing how to write blog articles."
-featured_image: "/images/uploads/example.jpg"
-tags: ["example", "test"]
-categories: ["general"]
-author: "HealthHatch Team"
+description: This is an example post showing how to write blog articles.
+featured_image: /images/uploads/example.jpg
+tags:
+  - example
+  - test
+categories:
+  - general
+author: HealthHatch Team
+draft: true
 ---
 
 This is an example post. You can write your blog content here.
