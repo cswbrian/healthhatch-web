@@ -1,12 +1,15 @@
 ---
-title: "範例文章"
+title: 範例文章
 date: 2024-01-15T10:00:00+08:00
-draft: false
-description: "這是一篇範例文章，展示如何撰寫博客文章。"
-featured_image: "/images/uploads/example.jpg"
-tags: ["範例", "測試"]
-categories: ["一般"]
-author: "HealthHatch Team"
+description: 這是一篇範例文章，展示如何撰寫博客文章。
+featured_image: /images/uploads/example.jpg
+tags:
+  - 範例
+  - 測試
+categories:
+  - 一般
+author: HealthHatch Team
+draft: true
 ---
 
 這是一篇範例文章。您可以在這裡撰寫您的博客內容。
