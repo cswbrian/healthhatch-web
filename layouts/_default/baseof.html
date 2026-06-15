@@ -84,14 +84,14 @@
   </head>
 
   {{- $environment := hugo.Environment | compare.Default "production" -}}
-  <body class="antialiased {{ $environment }}">
+  <body class="antialiased bg-brand-cream {{ $environment }}">
     {{- /* Google Tag Manager (noscript) */ -}}
     {{- if .Site.Params.googleTagManager -}}
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ .Site.Params.googleTagManager }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {{- end -}}
 
     {{ block "header" . }}{{ partials.Include "site-header.html" .}}{{ end }}
-    <main role="main">
+    <main role="main" class="bg-[#fef7f3]">
       {{ block "main" . }}{{ end }}
     </main>
     {{ block "footer" . }}{{ partials.IncludeCached "site-footer.html" . }}{{ end }}

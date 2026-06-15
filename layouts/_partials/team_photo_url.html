@@ -1,0 +1,4 @@
+{{- $path := . -}}
+{{- if and $path (fileExists (printf "static/%s" $path)) -}}
+{{- printf "/%s" $path -}}
+{{- end -}}

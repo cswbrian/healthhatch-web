@@ -1,37 +1,31 @@
 {{ define "main" }}
-  <article class="py-32 bg-brand-cream">
-    <div class="md:container mx-auto px-4 sm:px-6 max-w-4xl">
+  {{- $marker := "[[timeline]]" -}}
+  {{- $parts := split .RawContent $marker -}}
+  <article class="py-16 bg-brand-cream">
+    <div class="mt-16 container mx-auto px-4">
       <header class="mb-8">
-        {{ if .CurrentSection }}
-          <div class="text-md text-brand-green font-semibold mb-2 uppercase tracking-wide">
-            {{ .CurrentSection.Title }}
-          </div>
-        {{ end }}
-        
         <h1 class="text-4xl md:text-5xl text-gray-900 mb-4">
           {{ .Title }}
         </h1>
-        
-        <div class="flex flex-wrap items-center gap-4 text-gray-600 text-sm">
-          {{ if .Date }}
-            <time datetime="{{ .Date.Format "2006-01-02" }}">
-              {{ .Date.Format "January 2, 2006" }}
-            </time>
-          {{ end }}
-          
-        </div>
       </header>
-      
+
       {{ if .Params.featured_image }}
         <div class="mb-8">
           <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" class="w-full rounded-lg shadow-lg">
         </div>
       {{ end }}
-      
+
       <div class="markdown-content">
-        {{ .Content }}
+        {{- if eq (len $parts) 2 -}}
+          {{ (index $parts 0) | .RenderString }}
+          {{ partial "milestones-timeline.html" . }}
+          {{ (index $parts 1) | .RenderString }}
+          {{ partial "team-section.html" . }}
+        {{- else -}}
+          {{ .Content }}
+        {{- end -}}
       </div>
-      
+
       {{ if .Params.tags }}
         <div class="mt-8 pt-8 border-t border-gray-200">
           <div class="flex flex-wrap gap-2">
@@ -46,4 +40,3 @@
     </div>
   </article>
 {{ end }}
-

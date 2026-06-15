@@ -1,0 +1,67 @@
+founderBoard:
+  title:
+    en: "Board"
+    zh-hk: "董事會"
+  members:
+    - name:
+        en: "Dr. Kay LAM"
+        zh-hk: "Dr. Kay LAM"
+      role:
+        en: "Board"
+        zh-hk: "董事"
+      photo: "images/team/kay-lam.png"
+    - name:
+        en: "Ms. Karina LAU"
+        zh-hk: "Ms. Karina LAU"
+      role:
+        en: "Board"
+        zh-hk: "董事"
+      photo: "images/team/karina-lau.png"
+
+advisory:
+  title:
+    en: "Advisory Panel"
+    zh-hk: "顧問團"
+  members:
+    - name:
+        en: "Prof. Howard LING, MH"
+        zh-hk: "Prof. Howard LING, MH"
+      photo: "images/team/howard-ling.png"
+    - name:
+        en: "Mr. Keith CHOI"
+        zh-hk: "Mr. Keith CHOI"
+      photo: "images/team/keith-choi.png"
+    - name:
+        en: "Dr. Ning FAN"
+        zh-hk: "Dr. Ning FAN"
+      photo: "images/team/fan-ning.png"
+
+professional:
+  title:
+    en: "Professional Team"
+    zh-hk: "專業團隊"
+  roles:
+    - id: nurses
+      title:
+        en: "Registered Nurses"
+        zh-hk: "註冊護士"
+    - id: social_workers
+      title:
+        en: "Registered Social Workers"
+        zh-hk: "註冊社工"
+    - id: dietitians
+      title:
+        en: "Registered Dietitians"
+        zh-hk: "註冊營養師"
+    - id: community_workers
+      title:
+        en: "Community Health Workers"
+        zh-hk: "社區健康工作者"
+  coordinator:
+    name:
+      en: "Niko GUO"
+      zh-hk: "Niko GUO"
+    role:
+      en: "Project Coordinator"
+      zh-hk: "項目統籌"
+    photo: "images/team/niko-guo.png"

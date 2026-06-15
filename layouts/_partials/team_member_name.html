@@ -1,0 +1,10 @@
+{{- $entry := .name -}}
+{{- with index .name .lang -}}
+{{- . -}}
+{{- else -}}
+{{- with index .name "en" -}}
+{{- . -}}
+{{- else -}}
+{{- $entry -}}
+{{- end -}}
+{{- end -}}

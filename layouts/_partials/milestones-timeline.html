@@ -1,0 +1,19 @@
+{{- $lang := .Site.Language.Lang -}}
+<section class="milestones-timeline my-10 md:my-14" aria-label="{{ i18n "milestonesTitle" }}">
+  <h2 class="text-2xl md:text-3xl text-brand-green mb-6 md:mb-8 leading-tight border-b-2 border-brand-green-light pb-2">
+    {{ i18n "milestonesTitle" }}
+  </h2>
+  <ul class="relative border-l-2 border-brand-green-light ml-3 md:ml-4 space-y-8 md:space-y-10 list-none p-0 m-0">
+    {{- range .Site.Data.milestones -}}
+      {{- $date := index .date $lang | default (index .date "en") -}}
+      {{- $category := index .category $lang | default (index .category "en") -}}
+      {{- $title := index .title $lang | default (index .title "en") -}}
+      <li class="relative pl-6 md:pl-8">
+        <span class="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full border-2 border-brand-green bg-white" aria-hidden="true"></span>
+        <time class="block text-sm md:text-base font-semibold text-brand-green mb-1" datetime="{{ $date }}">{{ $date }}</time>
+        <span class="inline-block text-xs font-medium uppercase tracking-wide text-brand-green bg-brand-green-lighter px-2 py-0.5 rounded mb-2">{{ $category }}</span>
+        <p class="text-gray-700 leading-relaxed">{{ $title }}</p>
+      </li>
+    {{- end -}}
+  </ul>
+</section>

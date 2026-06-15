@@ -116,7 +116,7 @@
   </style>
   
   <!-- Hero Section -->
-  <section class=" min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white to-[#f9f9f9] border-b border-b-brand-green">
+  <section class=" min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-brand-cream to-brand-cream border-b border-b-brand-green">
     <!-- Animated Gradient Background -->
     <div class="absolute inset-0 overflow-hidden">
       <div class="animated-gradient-blob gradient-blob-1"></div>
@@ -144,99 +144,69 @@
           {{ i18n "heroDescription" }}
         </p>
         <div class="flex flex-col md:flex-row gap-4 items-start">
-          <a href="{{ "/individual-services/" | relLangURL }}" class="bg-white border border-black px-4 py-2 rounded-lg">
-            {{ i18n "individualServicesButton" }}
-          </a>
-          <a href="{{ "/enterprise-solutions/" | relLangURL }}" class="bg-white border border-black px-4 py-2 rounded-lg">
-            {{ i18n "enterpriseSolutionsButton" }}
+          <a href="https://wa.me/85293683751?text={{ i18n "heroWhatsAppMessage" | urlquery }}"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="bg-white border border-black px-4 py-2 rounded-lg">
+            {{ i18n "learnMoreButton" }}
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Core Services Section -->
-  <section class="py-16 lg:py-24 bg-gray-50">
+  <!-- Vision Section -->
+  <section class="py-16 lg:py-20 bg-brand-cream">
     <div class="container mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-brand-green mb-4">
-          {{ if eq .Site.Language.Lang "en" }}
-            Our Core Services
-          {{ else }}
-            我們的核心服務
-          {{ end }}
-        </h2>
-        <div class="w-24 h-1 bg-brand-green mx-auto"></div>
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-green mb-6">{{ i18n "visionTitle" }}</h2>
+        <p class="text-lg md:text-xl text-gray-700 leading-relaxed">{{ i18n "visionStatement" }}</p>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <!-- Service Card 1 -->
+    </div>
+  </section>
+
+  <!-- Four Pillars Section -->
+  <section class="py-16 lg:py-24 bg-brand-cream">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
         <div class="service-card">
           <div class="w-16 h-16 bg-brand-yellow-light rounded-lg flex items-center justify-center mb-4 mx-auto">
-            <svg class="w-8 h-8 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            <svg class="w-8 h-8 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-            {{ if eq .Site.Language.Lang "en" }}
-              Cross-Professional Precision Assessment
-            {{ else }}
-              跨專業精準評估
-            {{ end }}
-          </h3>
-          <p class="text-gray-600 text-center leading-relaxed">
-            {{ if eq .Site.Language.Lang "en" }}
-              Our professional team of registered nurses, nutritionists, and social workers provides precise health insights through clinical data and lifestyle assessments.
-            {{ else }}
-              由註冊護士、營養師及社工組成的專業團隊,透過臨床數據及生活習慣評估,為你提供精準的健康問題洞察。
-            {{ end }}
-          </p>
+          <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">{{ i18n "pillar1Title" }}</h3>
+          <p class="text-gray-600 text-center leading-relaxed">{{ i18n "pillar1Description" }}</p>
         </div>
-        
-        <!-- Service Card 2 -->
+
         <div class="service-card">
           <div class="w-16 h-16 bg-brand-yellow-light rounded-lg flex items-center justify-center mb-4 mx-auto">
-            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-8 h-8 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">{{ i18n "pillar2Title" }}</h3>
+          <p class="text-gray-600 text-center leading-relaxed">{{ i18n "pillar2Description" }}</p>
+        </div>
+
+        <div class="service-card">
+          <div class="w-16 h-16 bg-brand-yellow-light rounded-lg flex items-center justify-center mb-4 mx-auto">
+            <svg class="w-8 h-8 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">{{ i18n "pillar3Title" }}</h3>
+          <p class="text-gray-600 text-center leading-relaxed">{{ i18n "pillar3Description" }}</p>
+        </div>
+
+        <div class="service-card">
+          <div class="w-16 h-16 bg-brand-yellow-light rounded-lg flex items-center justify-center mb-4 mx-auto">
+            <svg class="w-8 h-8 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-            {{ if eq .Site.Language.Lang "en" }}
-              Evidence-Based Customized Solutions
-            {{ else }}
-              醫學實證定制方案
-            {{ end }}
-          </h3>
-          <p class="text-gray-600 text-center leading-relaxed">
-            {{ if eq .Site.Language.Lang "en" }}
-              We reject templated solutions. Based on individual lifestyle habits and body indicators, we create feasible and effective health plans grounded in medical evidence.
-            {{ else }}
-              拒絕模板化方案,根據個人生活習慣及身體指標,定制可行且有效的健康計劃,並以醫學實證為基礎。
-            {{ end }}
-          </p>
-        </div>
-        
-        <!-- Service Card 3 -->
-        <div class="service-card">
-          <div class="w-16 h-16 bg-brand-yellow-light rounded-lg flex items-center justify-center mb-4 mx-auto">
-            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-            {{ if eq .Site.Language.Lang "en" }}
-              Data-Driven Continuous Tracking
-            {{ else }}
-              數據化持續追蹤
-            {{ end }}
-          </h3>
-          <p class="text-gray-600 text-center leading-relaxed">
-            {{ if eq .Site.Language.Lang "en" }}
-              We use data to regularly review progress, provide personalized follow-up and emotional support, accompanying you through your entire health improvement journey.
-            {{ else }}
-              運用數據定期檢視進度,提供個人化跟進及情緒支援,陪伴你走過整個健康改善旅程。
-            {{ end }}
-          </p>
+          <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">{{ i18n "pillar4Title" }}</h3>
+          <p class="text-gray-600 text-center leading-relaxed">{{ i18n "pillar4Description" }}</p>
         </div>
       </div>
     </div>

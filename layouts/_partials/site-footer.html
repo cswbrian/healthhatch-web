@@ -1,12 +1,22 @@
-<footer class="bg-[#ced8dc] text-black py-12" role="contentinfo">
+{{- $isZh := eq .Site.Language.Lang "zh-HK" -}}
+{{- $missionText := cond $isZh "text-lg md:text-xl" "text-base md:text-lg" -}}
+{{- $footerText := cond $isZh "text-base" "text-sm" -}}
+{{- $footerHeading := cond $isZh "text-lg" "text-base" -}}
+{{- $footerAddress := cond $isZh "text-sm" "text-xs" -}}
+<footer class="bg-[rgb(237_218_192)] text-black py-12" role="contentinfo">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
       <!-- Organization Name -->
       <div>
+        <p class="{{ $missionText }} font-bold text-black leading-tight mb-4">{{ i18n "footerMission" }}</p>
         <a href="{{ .Site.Home.RelPermalink }}" class="flex items-center mb-4 no-underline">
           {{ $logo := resources.Get "css/HH_main_bi_color.png" }}
           <img src="{{ $logo.RelPermalink }}" alt="HealthHatch Logo" class="h-10 md:h-12 w-auto">
         </a>
+        <div class="space-y-3 mb-6">
+          <p class="text-xs md:text-sm leading-relaxed text-black">{{ i18n "footerServiceDisclaimer" }}</p>
+          <p class="text-xs md:text-sm leading-relaxed text-black">{{ i18n "footerSection88" }}</p>
+        </div>
         
         <!-- Social Media Links -->
         {{ if or .Site.Params.facebook_url .Site.Params.instagram_url .Site.Params.linkedin_url }}
@@ -54,15 +64,15 @@
         </div>
         {{ end }}
         
-        <p class="text-black text-sm">
+        <p class="text-black {{ $footerText }}">
           &copy; {{ now.Format "2006" }} {{ i18n "footerCopyright" }}
         </p>
       </div>
 
       <!-- Contact Information -->
       <div>
-        <h4 class="text-md font-semibold mb-4">{{ i18n "footerContactUs" }}</h4>
-        <div class="space-y-3 text-sm">
+        <h4 class="{{ $footerHeading }} font-semibold mb-4">{{ i18n "footerContactUs" }}</h4>
+        <div class="space-y-3 {{ $footerText }}">
           <!-- Phone -->
           <div class="flex items-start">
             <svg class="w-5 h-5 text-black mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,7 +100,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
             <p class="text-black">
-                <span class="text-black text-xs">{{ i18n "footerAddress" }}</span>
+                <span class="text-black {{ $footerAddress }}">{{ i18n "footerAddress" }}</span>
             </p>
           </div>
         </div>

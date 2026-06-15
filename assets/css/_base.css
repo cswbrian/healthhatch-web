@@ -8,3 +8,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html,
+  body,
+  main {
+    background-color: #f4f1e9;
+  }
+
+  main {
+    background-color: #fef7f3;
+  }
+}
+

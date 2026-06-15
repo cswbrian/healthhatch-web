@@ -18,5 +18,17 @@
   .service-card {
     @apply bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-200;
   }
+
+  .team-avatar-shadow {
+    box-shadow: 13px 13px 0 0 rgba(28, 33, 45, 1);
+  }
+
+  .team-avatar-shadow-board {
+    box-shadow: 13px 13px 0 0 #006f40;
+  }
+
+  .team-avatar-shadow-advisor {
+    box-shadow: 13px 13px 0 0 #f84d11;
+  }
 }
 

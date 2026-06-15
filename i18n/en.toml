@@ -1,35 +1,50 @@
+[milestonesTitle]
+other = "Milestones"
+
 [heroDescription]
-other = "Health Hatch is dedicated to promoting holistic health (from physical to mental). Whether you are an individual seeking assistance or an enterprise looking to enhance employee well-being, we have professional solutions."
+other = "Health Hatch is a multidisciplinary community health team. We walk alongside people through their health journeys, piloting innovative community health models to help build a new primary care ecosystem for Hong Kong."
 
-[individualServicesButton]
-other = "Book Individual Services"
+[learnMoreButton]
+other = "Learn More"
 
-[enterpriseSolutionsButton]
-other = "Enterprise Solutions Inquiry"
+[heroWhatsAppMessage]
+other = "Hello, I would like to learn more about Health Hatch's services."
 
-[coreServicesTitle]
-other = "Our Core Services"
+[visionTitle]
+other = "Vision"
 
-[service1Title]
-other = "Cross-Professional Precision Assessment"
+[visionStatement]
+other = "A world where every person has the support, knowledge, and power to shape their health and wellbeing across every chapter of life."
 
-[service1Description]
-other = "Our professional team of registered nurses, nutritionists, and social workers provides precise health insights through clinical data and lifestyle assessments."
+[pillar1Title]
+other = "We walk alongside people"
 
-[service2Title]
-other = "Evidence-Based Customized Solutions"
+[pillar1Description]
+other = "We meet people where they are — in their homes, neighbourhoods, and through the changes of everyday life. Through our multidisciplinary team of researchers, nurses, social workers, dietitians, and community care workers, we provide whole-person care that responds not only to symptoms, but also to the social, emotional, and practical realities that shape health."
 
-[service2Description]
-other = "We reject templated solutions. Based on individual lifestyle habits and body indicators, we create feasible and effective health plans grounded in medical evidence."
+[pillar2Title]
+other = "We build community capacity"
 
-[service3Title]
-other = "Data-Driven Continuous Tracking"
+[pillar2Description]
+other = "We train and support community members to become trusted care partners, extending care into the everyday spaces and relationships where health is lived. By building local capacity, we help communities create stronger systems of support that last."
 
-[service3Description]
-other = "We use data to regularly review progress, provide personalized follow-up and emotional support, accompanying you through your entire health improvement journey."
+[pillar3Title]
+other = "We pilot what works"
+
+[pillar3Description]
+other = "We design and test new ways of delivering community health care, learning from each step and refining what works in real life. Our goal is to develop models that can be adopted, adapted, and integrated into existing systems."
+
+[pillar4Title]
+other = "We build evidence for better care"
+
+[pillar4Description]
+other = "Our work is grounded in research and shaped by practice. We evaluate what we do, document what we learn, and turn that knowledge into better care for the communities we serve and the systems around them."
 
 [recentUpdatesTitle]
 other = "Latest Updates"
+
+[footerMission]
+other = "Transforming treatment into empowerment."
 
 [footerOrganization]
 other = "Community Health Association Limited"
@@ -45,4 +60,10 @@ other = "Follow Us"
 
 [footerCopyright]
 other = "Community Health Association Limited, Health Hatch"
+
+[footerServiceDisclaimer]
+other = "Health Hatch's assessment, education and support services are health-promotion in nature and do not constitute medical diagnosis or treatment. Please consult a registered medical practitioner for medical needs."
+
+[footerSection88]
+other = "Community Health Association Limited is a charitable institution exempt from tax under Section 88 of the Inland Revenue Ordinance."
 

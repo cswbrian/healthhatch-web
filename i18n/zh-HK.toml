@@ -37,6 +37,9 @@ other = "標籤為 \"{{ .Title }}\" 的頁面如下"
 [pageTitle]
 other = "{{ .Name }} 頁"
 
+[footerMission]
+other = "由治及己，掌握健康"
+
 [footerOrganization]
 other = "社區健康協會有限公司"
 
@@ -52,11 +55,50 @@ other = "關注我們"
 [footerCopyright]
 other = "社區健康協會有限公司 健康籽 版權所有"
 
+[footerServiceDisclaimer]
+other = "健康籽提供的健康評估、教育及支援服務屬健康促進性質，並不構成醫療診斷或治療；如有醫療需要，請諮詢註冊醫生。"
+
+[footerSection88]
+other = "社區健康協會有限公司為《稅務條例》第 88 條認可慈善機構"
+
+[milestonesTitle]
+other = "里程碑"
+
 [heroDescription]
-other = "Health Hatch 致力於推廣全人健康（從生理到心理），無論你是尋求協助的個人，還是希望提升員工福祉的企業，我們都有專業的方案。"
+other = "健康籽是一個跨專業社區健康團隊。我們陪伴每一位街坊走過健康旅程，並在社區試行創新的服務模式，建立屬於香港人的基層醫療新生態。"
 
-[individualServicesButton]
-other = "個人服務預約"
+[visionTitle]
+other = "願景"
 
-[enterpriseSolutionsButton]
-other = "企業方案查詢"
+[visionStatement]
+other = "我們相信，每個人在任何人生階段，皆應獲得支援、知識及力量，以促進其身心健康。"
+
+[pillar1Title]
+other = "結伴同行"
+
+[pillar1Description]
+other = "本團隊從街坊的處境出發，走進其家庭、社區與日常生活的各種變動中，陪伴他們完成整個健康旅程。透過由學者、護士、社工、營養師及社區健康工作者組成的跨專業團隊，我們設計以人為本的照顧方案，不僅著眼於症狀本身，而關注如何形塑健康社會。"
+
+[pillar2Title]
+other = "裝備社區"
+
+[pillar2Description]
+other = "我們培訓並支援社區人士成為可靠的健康伙伴，將照顧延伸至日常生活與人際關係中。透過與社區共同成長，我們攜手築起更堅實而長遠的基層醫療系統。"
+
+[pillar3Title]
+other = "落地試驗"
+
+[pillar3Description]
+other = "我們設計不同的醫療服務模式，於社區實踐中持續學習，以找出最切合各社區需要的基層醫療方案，繼而整合至現行的醫療和社褔系統中。"
+
+[pillar4Title]
+other = "實證為本"
+
+[pillar4Description]
+other = "我們的工作以學術研究為基，透過與街坊同行的實踐中不斷形塑發展。團隊將用心記錄每個方案的服務成效，把知識轉化為行動 —— 從各地區的在地經驗出發，並深化及整理成切合其他社區的照顧模式，從而惠及整個醫療系統。"
+
+[learnMoreButton]
+other = "了解更多"
+
+[heroWhatsAppMessage]
+other = "你好，我想了解健康籽的服務"
